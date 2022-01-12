@@ -4,15 +4,23 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC_z7q2AQoKPzJ9fEsGe_x04uc9WYDAFl8",
-    authDomain: "indiekeys.firebaseapp.com",
-    databaseURL: "https://indiekeys-default-rtdb.firebaseio.com",
-    projectId: "indiekeys",
-    storageBucket: "indiekeys.appspot.com",
-    messagingSenderId: "1048792979110",
-    appId: "1:1048792979110:web:bdbf8242ae9bec28024667",
-    measurementId: "G-316DCVS8D5"
+
+    apiKey: "AIzaSyBBcVTcLP_jDrRYKOj4ayXncHdzMzxzDQo",
+
+    authDomain: "indiekeys-d0568.firebaseapp.com",
+
+    projectId: "indiekeys-d0568",
+
+    storageBucket: "indiekeys-d0568.appspot.com",
+
+    messagingSenderId: "965307358432",
+
+    appId: "1:965307358432:web:9bd7ae4d1adacd8ae24485",
+
+    measurementId: "G-9MCGDMCRRQ"
+
 };
+
 
 // Initialize Firebase
 

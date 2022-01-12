@@ -25,10 +25,13 @@
                             </div>
                             <form class="user">
                                 <div class="mb-3"><input class="form-control form-control-user" type="email" id="correo" placeholder="Correo electrónico" name="email"></div>
+
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="repeat_pass" placeholder="Repetir contraseña" name="repeat_pass"></div>
-                                </div><button class="btn btn-primary d-block btn-user w-100" id="registrar" type="submit">Crear una cuenta</button>
+                                </div>
+                                <div class="mb-3 text-center" id="divError"><span class="text-danger" id="messageError"></span></div>
+                                <a id="registrar" class="btn btn-primary d-block btn-user w-100" role="button">Crear una cuenta</a>
                                 <hr><a id="google" class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Registrarse con Google</a><a id="facebook" class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Registrarse con Facebook</a>
                                 <hr>
                             </form>
