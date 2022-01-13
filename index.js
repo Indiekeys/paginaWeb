@@ -3,9 +3,10 @@ const app = express();
 const port = 8080;
 
 app.use('/assets',express.static('assets'));
+app.use("/src",express.static("src"));
 
 app.get('/', (req, res) => {
-    res.redirect('/login');
+    res.sendFile(__dirname + '/paginas/index.html');
 });
 
 app.get('/login', (req, res) => {

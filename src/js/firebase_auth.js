@@ -35,17 +35,32 @@ export const hideLoginError = () => {
 export const showLoginError = (error) => {
     divError.style.display = "block";
     console.log(error.code);
-    if(error.code == AuthErrorCodes.INVALID_PASSWORD){
-        messageError.innerHTML = "Error al introducir la contraseña";
-    }else if(error=="error"){
-        messageError.innerHTML = "Las contraseñas no coinciden";
-    }else if(error.code == "auth/invalid-email"){
-        messageError.innerHTML = "Por favor introduzca un correo valido";
-    }else if(error.code == "auth/weak-password"){
-        messageError.innerHTML = "La contraseña debe tener como mínimo 6 caracteres";
-    }else{
-        messageError.innerHTML = `Error: ${error.message}`;
+    //Optimizar
+    switch (error.code) {
+        case AuthErrorCodes.INVALID_EMAIL:
+            messageError.innerHTML = "Por favor introduzca un correo valido";
+            break;
+        case AuthErrorCodes.INVALID_PASSWORD:
+            messageError.innerHTML = "Error al introducir la contraseña";
+            break;
+        case AuthErrorCodes.USER_NOT_FOUND:
+            messageError.innerHTML = "El usuario no existe";
+            break;
+        case AuthErrorCodes.USER_DISABLED:
+            messageError.innerHTML = "El usuario está deshabilitado";
+            break;
+        case AuthErrorCodes.EMAIL_ALREADY_IN_USE:
+            messageError.innerHTML = "El correo ya está en uso";
+            break;
+        case AuthErrorCodes.WEAK_PASSWORD:
+            messageError.innerHTML = "La contraseña debe tener como mínimo 6 caracteres";
+            break;
+        default:
+            messageError.innerHTML = "Error desconocido";
+            break;
     }
+
+
 }
 
 export const authGoogle = async () => {
@@ -91,7 +106,7 @@ export const correctAuth = () => {
 
     onAuthStateChanged(auth, (user) => {
         if (user!= null) {
-            window.location.href = "../paginas/index.html";
+            window.location.href = "/";
         }
 
     });
@@ -102,7 +117,7 @@ export const sign_out = async () => {
 
     try {
         const signOutAuth = await signOut(auth);
-        window.location.href = "../paginas/index.html";
+        window.location.href = "/";
     }catch (error){
         console.log(error);
     }
