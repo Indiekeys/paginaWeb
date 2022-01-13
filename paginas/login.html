@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -27,14 +28,13 @@
                                     <form class="user">
                                         <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="" placeholder="Correo electrónico" name="email"></div>
                                         <div class="mb-3"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass"></div>
-                                        <div class="mb-3">
-                                            <div class="custom-control custom-checkbox small"></div>
-                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar sesión</button>
-                                        <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Iniciar sesión con Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Iniciar sesión con Facebook</a>
+                                        <div class="mb-3 text-center" id="divError"><span class="text-danger" id="messageError"></span></div>
+                                        <a id="sign_in" class="btn btn-primary d-block btn-user w-100 mb-2" role="button">Iniciar sesión</a>
+                                        <hr><a id="google" class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Iniciar sesión con Google</a><a id="facebook" class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Iniciar sesión con Facebook</a>
                                         <hr>
                                     </form>
                                     <div class="text-center"><a class="small" href="forgot-password.html">¿Has olvidado tu contraseña?</a></div>
-                                    <div class="text-center"><a class="small" href="/register">¡Crear una cuenta en Indiekeys!</a></div>
+                                    <div class="text-center"><a class="small" href="../paginas/register.html">¡Crear una cuenta en Indiekeys!</a></div>
                                 </div>
                             </div>
                         </div>
@@ -44,6 +44,7 @@
         </div>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="../src/js/index_login.js"></script>
 </body>
 
 </html>
