@@ -1,14 +1,17 @@
 "use strict";
 import * as script from "./firebase_auth.js";
+import * as validar from "./validacion.js";
 
 window.onload = ()=>{
 
 
-    document.getElementById("sign_out").addEventListener(
+    script.comprobarAuth();
+
+    document.getElementById("log_out").addEventListener(
         "click",
         (e) => {
 
-            script.sign_out();
+            script.log_out();
         },
         false
     )

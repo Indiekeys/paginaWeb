@@ -1,6 +1,7 @@
 "use strict";
 import { app } from "./firebase.js";
 import {getAuth,createUserWithEmailAndPassword,onAuthStateChanged,AuthErrorCodes,GoogleAuthProvider,signInWithPopup,FacebookAuthProvider,setPersistence,signOut,browserLocalPersistence,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+import * as validar from "./validacion.js";
 
 const auth = getAuth(app);
 
@@ -105,7 +106,7 @@ export const signAccount = async (email,pass) => {
 export const correctAuth = () => {
 
     onAuthStateChanged(auth, (user) => {
-        if (user!= null) {
+        if (user != null) {
             window.location.href = "/";
         }
 
@@ -113,11 +114,23 @@ export const correctAuth = () => {
 
 };
 
-export const sign_out = async () => {
+export const comprobarAuth = () => {
+
+    onAuthStateChanged(auth, (user) => {
+        if (user != null) {
+            validar.printLogOut();
+        }else{
+            validar.printLogIn();
+        }
+
+    });
+
+};
+
+export const log_out = async () => {
 
     try {
-        const signOutAuth = await signOut(auth);
-        window.location.href = "/";
+        const logOutAuth = await signOut(auth);
     }catch (error){
         console.log(error);
     }
