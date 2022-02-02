@@ -8,7 +8,7 @@ return `<div class="basic-panel products-trending">
                                 <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
                                 <div class="shadow">
                                     <div class="discount">${games.data().descuento}%</div>
-                                    <div class="price">${precioTotal}€</div>
+                                    <div class="price">${precioTotal.toFixed(2)}€</div>
                                 </div>
                             </a>
                             <div class="name">${games.data().nombre}</div>
