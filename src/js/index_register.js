@@ -1,6 +1,7 @@
 "use strict";
 import * as script from "./firebase_auth.js";
 import * as validar from "./validacion.js";
+import {setDisplayName} from "./firebase_auth.js";
 
 
 window.onload = ()=>{
@@ -19,10 +20,9 @@ script.correctAuth();
             let pass2 = document.getElementById("repeat_pass").value;
 
             if(validar.validacionPass(pass,pass2)) {
-                if (await script.createAccount(correo, pass)) {
-                  await script.setDisplayName(nombre, apellidos);
-                  await script.setDefaultImageProfile();
-                }
+                await script.createAccount(correo, pass);
+                await script.setDisplayName(nombre, apellidos);
+                await script.setDefaultImageProfile();
             }else{
                 script.showLoginError("error");
             }
@@ -33,9 +33,8 @@ script.correctAuth();
     document.getElementById("google").addEventListener(
         "click",
         async (e) => {
-            if(await script.authGoogle()){
-              await script.setDefaultImageProfile();
-            }
+            await script.authGoogle();
+            await script.setDefaultImageProfile();
         },
         false
     )
@@ -43,11 +42,13 @@ script.correctAuth();
     document.getElementById("facebook").addEventListener(
         "click",
         async (e) => {
-            if(await script.authFacebook()){
-              await script.setDefaultImageProfile();
-            }
+            await script.authFacebook();
+            await script.setDefaultImageProfile();
         },
         false
     )
+
+
+
 
 }
