@@ -11,6 +11,8 @@ import {
   signOut,
   browserLocalPersistence,
   signInWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import * as validar from "./validacion.js";
 
@@ -27,7 +29,8 @@ export const persistAccount = () => {
 
 export const createAccount = async (email, pass) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, pass);
+    await createUserWithEmailAndPassword(auth, email, pass)
+    //Enviar verfición de correo
     hideLoginError();
     persistAccount();
     correctAuth();
@@ -90,7 +93,8 @@ export const showLoginError = (error) => {
 
 export const authGoogle = async () => {
   try {
-    await signInWithPopup(auth, providerG);
+    let google = await signInWithPopup(auth, providerG);
+    console.log(google);
     hideLoginError();
     persistAccount();
     correctAuth();
@@ -146,3 +150,23 @@ export const log_out = async () => {
     console.log(error);
   }
 };
+
+export const setDisplayName = async (nombre,apellidos) => {
+  try{
+    updateProfile(auth.currentUser, {
+      displayName:  nombre + " " + apellidos,
+    });
+  }catch (error) {
+    console.log(error);
+  }
+}
+
+export const setDefaultImageProfile = () => {
+  try{
+    updateProfile(auth.currentUser, {
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b",
+    });
+  }catch (error) {
+    console.log(error);
+  }
+}

@@ -11,14 +11,18 @@ script.correctAuth();
 
     document.getElementById("registrar").addEventListener(
         "click",
-        (e) => {
-
+        async (e) => {
+            let nombre = document.getElementById("nombre").value;
+            let apellidos = document.getElementById("apellidos").value;
             let correo = document.getElementById("correo").value;
             let pass = document.getElementById("pass").value;
             let pass2 = document.getElementById("repeat_pass").value;
 
             if(validar.validacionPass(pass,pass2)) {
-                script.createAccount(correo,pass);
+                if (await script.createAccount(correo, pass)) {
+                  await script.setDisplayName(nombre, apellidos);
+                  await script.setDefaultImageProfile();
+                }
             }else{
                 script.showLoginError("error");
             }
@@ -28,23 +32,22 @@ script.correctAuth();
 
     document.getElementById("google").addEventListener(
         "click",
-        (e) => {
-
-            script.authGoogle();
+        async (e) => {
+            if(await script.authGoogle()){
+              await script.setDefaultImageProfile();
+            }
         },
         false
     )
 
     document.getElementById("facebook").addEventListener(
         "click",
-        (e) => {
-
-            script.authFacebook();
+        async (e) => {
+            if(await script.authFacebook()){
+              await script.setDefaultImageProfile();
+            }
         },
         false
     )
-
-
-
 
 }
