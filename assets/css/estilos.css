@@ -268,72 +268,72 @@
 
 }
 
-.badge.steam {
+.badge.Steam {
     background-color: #000;
     background-position: -7px -5px
 }
 
-.badge.origin {
+.badge.Origin {
     background-color: #f50;
     background-position: -6px -75px
 }
 
-.badge.ubisoft-connect {
+.badge.Ubisoft-connect {
     background-color: #00a2ff;
     background-position: -7px -38px
 }
 
-.badge.battle-net {
+.badge.Battle-net {
     background-color: #2e64ca;
     background-position: -6px -110px
 }
 
-.badge.indies-com {
+.badge.Indies-com {
     background-color: #ce0000;
     background-position: -6px -148px
 }
 
-.badge.others {
+.badge.Others {
     background-color: #777;
     background-position: -2px -174px
 }
 
-.badge.ncsoft {
+.badge.Ncsoft {
     background-color: #8e8e8e;
     background-position: -6px -231px
 }
 
-.badge.gog-com {
+.badge.Gog-com {
     background-color: #ae00ff;
     background-position: -5px -268px
 }
 
-.badge.other {
+.badge.Other {
     background-color: #777;
     background-position: -2px -173px
 }
 
-.badge.rockstar {
+.badge.Rockstar {
     background-color: #f6ac33;
     background-position: -1px -393px
 }
 
-.badge.software {
+.badge.Software {
     background-color: #0079d7;
     background-position: -2px -488px
 }
 
-.badge.microsoft-store {
+.badge.Microsoft-store {
     background-color: #fff;
     background-position: -2px -488px
 }
 
-.badge.epic-games {
+.badge.Epic-games {
     background-color: #0078f2;
     background-position: -2px -522px
 }
 
-.badge.bethesda {
+.badge.Bethesda {
     background-color: #484848;
     background-position: 4px -363px;
     background-size: 23px
@@ -377,10 +377,17 @@
     border-radius: 9px
 }
 
+
+
 @media screen and (max-width: 850px) {
     .ig-mainwrapper {
         padding: 10px
     }
+}
+
+.act-shop .ig-mainwrapper {
+    padding: 0;
+    min-height: 700px
 }
 
 #backgroundLink {
@@ -482,7 +489,7 @@
 }
 
 .ig-sections-main-content, .mainshadow {
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .1)
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.76)
 }
 
 #nav{
@@ -499,6 +506,109 @@ li,a,div{
     position: fixed;
     top: 0
 }
+
+.footer {
+    color: #777;
+    font-weight: 400
+}
+
+.footer .links a.sublinks {
+    color: #fff;
+    border-right: 1px solid hsla(0, 0%, 100%, .2);
+    margin-right: 10px;
+    padding-right: 10px;
+    height: 17px
+}
+
+.footer .links a.sublinks:hover {
+    color: #0068ff;
+}
+
+.footer .links a.sublinks:last-of-type {
+    margin-right: 0;
+    border: none;
+    padding-right: 0
+}
+
+.footer .links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+}
+
+.ig-footer-separator {
+    color: #636363;
+    padding: 0 10px
+}
+
+#ig-copyright {
+    color: #fff;
+    text-align: left;
+    opacity: .2
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0
+}
+
+.socials a {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border-radius: 33px;
+    transition: .1s;
+    margin: 5px
+}
+
+
+.socials span {
+    display: block;
+    color: #777;
+    margin-bottom: 2px
+}
+
+.socials a.instagram {
+    background: url(/assets/img/insta.png);
+    background-size: 50px
+}
+
+.socials a.facebook {
+    background: url(/assets/img/social.png) 0 0;
+    background-size: 50px
+}
+
+.socials a.twitter {
+    background: url(/assets/img/social.png) 0 150px;
+    background-size: 50px
+}
+
+.socials a.twitch {
+    background: url(/assets/img/social.png) 0 200px;
+    background-size: 50px
+}
+
+.socials a.youtube {
+    background: url(/assets/img/social.png) 0 100px;
+    background-size: 50px
+}
+
+
+.socials a.extension.firefox {
+    display: none
+}
+
+.socials a:hover {
+    transform: scale(1.15)
+}
+
+.footer-container {
+    position: relative;
+    padding: 10px 0 20px;
+    margin-top: 20px;
+}
+
 
 
 

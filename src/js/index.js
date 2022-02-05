@@ -6,7 +6,9 @@ window.onload = ()=>{
 
 
     script.comprobarAuth();
-    db.obtenerGames();
+    db.gamesDate();
+    db.obtenerMasDescuento();
+    db.obtenerDlc();
 
     document.getElementById("log_out").addEventListener(
         "click",

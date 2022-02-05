@@ -20,12 +20,63 @@ import {
 const db = getFirestore(app);
 const games = collection(db,"games");
 
-export const obtenerGames = async () => {
-    let obtainGames = await getDocs(games);
-    document.getElementById("ig-panel-center").innerHTML ="";
+export const gamesDate = async () => {
+    let date = new Date();
+
+    const consulta = await query(
+
+        games,
+        where("descripcion.Fecha de lanzamiento", "<=", date),
+        limit(2),
+        orderBy("descripcion.Fecha de lanzamiento", "desc"),
+    );
+    let obtainGames = await getDocs(consulta);
 
     obtainGames.docs.map((documento) => {
-        document.getElementById("ig-panel-center").innerHTML += plantillas.printGames(documento);
+        document.getElementById("juegos").innerHTML += plantillas.printGames(documento);
+
+    });
+};
+
+export const obtenerDlc = async () => {
+
+    const consulta = await query(
+
+        games,
+        where("descripcion.Tipo", "==", "DLC"),
+        limit(5),
+    );
+    let obtainGames = await getDocs(consulta);
+
+    obtainGames.docs.map((documento) => {
+        document.getElementById("DLC").innerHTML += plantillas.printGames(documento);
+
+    });
+};
+
+export const obtenerMasDescuento = async () => {
+
+    const consulta = await query(
+
+        games,
+        where("descuento", "<=", 100),
+        limit(10),
+        orderBy("descuento", "desc"),
+    );
+    let obtainGames = await getDocs(consulta);
+
+    obtainGames.docs.map((documento) => {
+        document.getElementById("juegosDescuento").innerHTML += plantillas.printGames(documento);
+
+    });
+};
+
+export const obtenerGames = async () => {
+    let obtainGames = await getDocs(games);
+    document.getElementById("juegos").innerHTML ="";
+
+    obtainGames.docs.map((documento) => {
+        document.getElementById("juegos").innerHTML += plantillas.printGames(documento);
 
     });
 };
