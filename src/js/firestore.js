@@ -26,9 +26,9 @@ export const gamesDate = async () => {
     const consulta = await query(
 
         games,
-        where("descripcion.Fecha de lanzamiento", "<=", date),
+        where("descripcion.fechaLanzamiento", "<=", date),
         limit(2),
-        orderBy("descripcion.Fecha de lanzamiento", "desc"),
+        orderBy("descripcion.fechaLanzamiento", "desc"),
     );
     let obtainGames = await getDocs(consulta);
 
@@ -79,4 +79,13 @@ export const obtenerGames = async () => {
         document.getElementById("juegos").innerHTML += plantillas.printGames(documento);
 
     });
+};
+
+export const obtenerGame = async () => {
+    let game = await doc(games,"z5rgP2ZYB6P462gZ62ue");
+    let obtainGames = await getDoc(game);
+    document.getElementById("game").innerHTML ="";
+
+        document.getElementById("game").innerHTML += plantillas.printGame(obtainGames);
+
 };
