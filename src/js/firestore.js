@@ -49,7 +49,7 @@ export const obtenerDlc = async () => {
     let obtainGames = await getDocs(consulta);
 
     obtainGames.docs.map((documento) => {
-        document.getElementById("DLC").innerHTML += plantillas.printGames(documento);
+        document.getElementById("DLC").innerHTML += plantillas.printDLC(documento);
 
     });
 };

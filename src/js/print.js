@@ -2,7 +2,7 @@ export const printGames = (games) => {
 let precioTotal = games.data().precio-((games.data().descuento*games.data().precio)/100);
 
 return `
-                        <div class="item" id="ig-preorders-item-1">
+                        <div class="item force-badge" id="ig-preorders-item-1">
                             <a class="cover" href="${games.id}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
                                 <div class="badge ${games.data().plataforma}"></div>
                                 <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
@@ -19,7 +19,7 @@ export const printDLC = (games) => {
     let precioTotal = games.data().precio-((games.data().descuento*games.data().precio)/100);
 
     return `
-                        <div class="item" id="ig-preorders-item-1">
+                        <div class="item force-badge" id="ig-preorders-item-1">
                             <a class="cover" href="/paginas/index.html" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
                                 <div class="badge ${games.data().plataforma}"></div>
                                 <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
