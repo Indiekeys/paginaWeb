@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8081;
+const port = 80;
 
 app.use('/assets',express.static('assets'));
 app.use("/src",express.static("src"));
