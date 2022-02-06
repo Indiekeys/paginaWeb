@@ -53,10 +53,10 @@ export const ERRORES_LOGIN = {
   "auth/invalid-password": "La contraseña no es valida",
   "auth/email-already-in-use": "El correo ya está en uso",
   "auth/weak-password": "La contraseña debe tener como mínimo 6 caracteres",
-  "auth/popup-closed-by-user": "",
+  "auth/popup-closed-by-user": " ",
   "auth/operation-not-allowed": "La operación no está permitida",
-  "auth/popup-blocked": "",
-  "auth/cancelled-popup-request": "",
+  "auth/popup-blocked": " ",
+  "auth/cancelled-popup-request": " ",
   "auth/too-many-requests": "Hemos bloqueado todas las solicitudes de este dispositivo debido a una actividad inusual. Vuelve a intentarlo más tarde.",
 };
 
@@ -67,7 +67,6 @@ export const authGoogle = async () => {
     persistAccount();
     correctAuth();
   } catch (error) {
-    console.log(error);
     divError.style.display = "block";
     messageError.innerHTML = ERRORES_LOGIN[error.code] || "Ha surgido un error inesperado, inténtelo de nuevo" ;
   }

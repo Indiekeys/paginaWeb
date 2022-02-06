@@ -24,6 +24,7 @@ script.correctAuth();
                     await script.setDefaultImageProfile();
                 }
             }else{
+                console.log("Las contraseñas no coinciden");
                 document.getElementById("messageError").innerHTML = "Ha surgido un error inesperado, inténtelo de nuevo";
             }
         },
