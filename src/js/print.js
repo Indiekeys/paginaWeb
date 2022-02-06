@@ -1,9 +1,9 @@
 export const printGames = (games) => {
 let precioTotal = games.data().precio-((games.data().descuento*games.data().precio)/100);
-
+let titulo = games.data().nombre.split(" ").join("-");
 return `
                         <div class="item force-badge" id="ig-preorders-item-1">
-                            <a class="cover" href="${games.id}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
+                            <a class="cover" href="/game/${games.id}-${titulo}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
                                 <div class="badge ${games.data().plataforma}"></div>
                                 <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
                                 <div class="shadow">
@@ -17,10 +17,10 @@ return `
 
 export const printDLC = (games) => {
     let precioTotal = games.data().precio-((games.data().descuento*games.data().precio)/100);
-
+    let titulo = games.data().nombre.split(" ").join("-");
     return `
                         <div class="item force-badge" id="ig-preorders-item-1">
-                            <a class="cover" href="/paginas/index.html" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
+                            <a class="cover" href="/game/${games.id}-${titulo}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
                                 <div class="badge ${games.data().plataforma}"></div>
                                 <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
                                 <img src="/assets/img/dlc.png" class="dlc" alt="DLC">

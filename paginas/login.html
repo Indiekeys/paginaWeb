@@ -25,11 +25,11 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4"><strong>¡Bienvenido de nuevo!</strong><br></h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="" placeholder="Correo electrónico" name="email"></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass"></div>
+                                    <form class="user" id="sign_in">
+                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="" placeholder="Correo electrónico" name="email" required="required"></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass" required="required"></div>
                                         <div class="mb-3 text-center" id="divError"><span class="text-danger" id="messageError"></span></div>
-                                        <a id="sign_in" class="btn btn-primary d-block btn-user w-100 mb-2" role="button">Iniciar sesión</a>
+                                        <input type="submit" value="Iniciar sesión" class="btn btn-primary d-block btn-user w-100 mb-2" role="button">
                                         <hr><a id="google" class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Iniciar sesión con Google</a><a id="facebook" class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Iniciar sesión con Facebook</a>
                                         <hr>
                                     </form>
