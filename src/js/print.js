@@ -43,6 +43,7 @@ export const printGame = (game) => {
         return formatted_date;
     }
     let fechaFinal = formatDate(fecha);
+    document.getElementById("backgroundLink").setAttribute("style",`background: linear-gradient(to bottom, #1d201f 0px, transparent 150px), url(${game.data().fondo}) center 0 no-repeat  #1d201f;`)
     return `
 
   <div id="ig-main-container">
