@@ -23186,25 +23186,12 @@ body.darkmode .payment-container form .caixa .form-panel > form .pan-container {
     }
 }
 
-.product .buy .button.addwishlist {
-    background-color: rgba(255, 84, 0, .30980392156862746);
-    background-image: url(/themes/igv1/modules/product/images/heart.svg);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 19px;
-    width: 30px;
-    margin-right: 10px;
-    flex-shrink: 0
-}
 
 .product .buy .button.addwishlist:hover {
     background-size: 22px
 }
 
-.product .buy .button.addwishlist.wishlist-added {
-    background: rgba(128, 255, 1, .278431) url(/themes/igv1/modules/product/images/check.svg) no-repeat 50%;
-    background-size: 19px
-}
+
 
 .product .drop {
     background-color: rgba(33, 140, 201, .2);

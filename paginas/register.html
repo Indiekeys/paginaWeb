@@ -23,23 +23,23 @@
                                 <h4 class="text-dark mb-4"><strong>¡Crear una cuenta!</strong></h4>
                             </div>
 
-                            <form class="user">
+                            <form class="user" id="form_registro" method="post">
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Primer nombre" name="nombre"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="apellidos" placeholder="Apellidos" name="apellidos"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre" placeholder="Primer nombre" name="nombre" required="required"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="apellidos" placeholder="Apellidos" name="apellidos" required="required"></div>
                                 </div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="correo" placeholder="Correo electrónico" name="email"></div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="correo" placeholder="Correo electrónico" name="email" required="required"></div>
 
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="repeat_pass" placeholder="Repetir contraseña" name="repeat_pass"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="pass" placeholder="Contraseña" name="pass" required="required"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="repeat_pass" placeholder="Repetir contraseña" name="repeat_pass" required="required"></div>
                                 </div>
                                 <div class="mb-3 text-center" id="divError"><span class="text-danger" id="messageError"></span></div>
-                                <a id="registrar" class="btn btn-primary d-block btn-user w-100" role="button">Crear una cuenta</a>
+                                <input type="submit" class="btn btn-primary d-block btn-user w-100" role="button" value="Crear una cuenta">
                                 <hr><a id="google" class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Registrarse con Google</a><a id="facebook" class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Registrarse con Facebook</a>
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small" href="forgot-password.html">¿Has olvidado tu contraseña?</a></div>
+                            <div class="text-center"><a class="small" href="/recovery-password">¿Has olvidado tu contraseña?</a></div>
                             <div class="text-center"><a class="small" href="/login">¿Ya tienes una cuenta? Iniciar sesión</a></div>
                         </div>
                     </div>
