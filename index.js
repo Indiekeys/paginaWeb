@@ -15,6 +15,10 @@ app.get('/register',(req,res) => {
     res.sendFile(__dirname + '/paginas/register.html');
 });
 
+app.get('/recovery-password',(req,res) => {
+    res.sendFile(__dirname + '/paginas/recovery-password.html');
+});
+
 app.get("/game/:id",(req, res) => {
     res.sendFile(__dirname + '/paginas/juego.html');
 });
