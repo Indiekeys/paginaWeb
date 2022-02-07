@@ -1331,3 +1331,30 @@ padding: 20px;
     color: white;
 }
 
+#alertas{
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.error{
+    color: #D8000C;
+    background-color: #ffbaba;
+    text-align: center;
+    width: 300px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1em;
+}
+
+.success{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    text-align: center;
+    width: 300px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1em;
+}
