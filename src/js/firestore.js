@@ -27,7 +27,7 @@ export const gamesDate = async () => {
 
         games,
         where("descripcion.fechaLanzamiento", "<=", date),
-        limit(2),
+        limit(10),
         orderBy("descripcion.fechaLanzamiento", "desc"),
     );
     let obtainGames = await getDocs(consulta);
