@@ -467,29 +467,14 @@
     }
 }
 
-@media screen and (max-width: 850px) {
-    .basic-panel .item:nth-last-child(-n+2) {
-        display: none
-    }
-}
-
 @media screen and (max-width: 550px) {
     .basic-panel .item:nth-last-child(-n+2) {
         display: inline-block
     }
 }
 
-@media screen and (max-width: 350px) {
-    .basic-panel .item:nth-last-child(-n+2) {
-        display: none
-    }
-}
 
-@media screen and (max-width: 550px) {
-    .basic-panel .item:nth-last-child(-n+1) {
-        display: none
-    }
-}
+
 
 .ig-sections-main-content, .mainshadow {
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.76)
@@ -520,6 +505,8 @@ li,a,div{
     height: 17px
 }
 
+
+
 .footer .links a.sublinks:hover {
     color: #0068ff;
 }
@@ -531,23 +518,21 @@ li,a,div{
 }
 
 .footer .links {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center
+
+
 }
 
 .ig-footer-separator {
     color: #636363;
-    padding: 0 10px
+    padding: 1px 1px
 }
-
-
 
 .socials {
     display: flex;
     justify-content: center;
     padding: 20px 0px;
 }
+
 
 
 .socials a {
@@ -557,6 +542,12 @@ li,a,div{
     border-radius: 33px;
     transition: .1s;
     margin: 5px
+}
+
+@media screen and (max-width: 750px) {
+    .socials a {
+        margin: 50px 5px 5px 5px;
+    }
 }
 
 
@@ -602,8 +593,9 @@ li,a,div{
 
 .footer-container {
     position: relative;
-    padding: 10px 0 20px;
+    padding: 0px 0 0px;
     margin-top: 20px;
+    height: 300px;
 }
 
 .partner-container .partner-interface-container .integration-container .tabs-container .tab .discord-template .content .embed .product {
@@ -793,7 +785,7 @@ li,a,div{
 @media screen and (max-width: 750px) {
     .product .infos {
         width: calc(100% - 40px);
-        margin-left: 0;
+        margin-left: 20px;
         border-radius: 0 0 8px 8px
     }
 }
@@ -1331,3 +1323,14 @@ padding: 20px;
     color: white;
 }
 
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    background-color: gray;
+}
+
+.noStock{
+    -webkit-filter: grayscale(1); /* Webkit */
+    filter: gray(1);
+    filter: grayscale(1);
+}

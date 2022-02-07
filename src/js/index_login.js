@@ -6,9 +6,9 @@ window.onload = ()=>{
     script.correctAuth();
 
     document.getElementById("sign_in").addEventListener(
-        "click",
+        "submit",
         (e) => {
-
+            e.preventDefault()
             let correo = document.getElementById("email").value;
             let pass = document.getElementById("pass").value;
 

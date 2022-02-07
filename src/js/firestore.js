@@ -27,7 +27,7 @@ export const gamesDate = async () => {
 
         games,
         where("descripcion.fechaLanzamiento", "<=", date),
-        limit(2),
+        limit(10),
         orderBy("descripcion.fechaLanzamiento", "desc"),
     );
     let obtainGames = await getDocs(consulta);
@@ -81,11 +81,13 @@ export const obtenerGames = async () => {
     });
 };
 
-export const obtenerGame = async () => {
-    let game = await doc(games,"z5rgP2ZYB6P462gZ62ue");
+export const obtenerGame = async (juego) => {
+    let game = await doc(games,juego);
     let obtainGames = await getDoc(game);
-    document.getElementById("game").innerHTML ="";
-
+    if(obtainGames.exists()) {
+        document.getElementById("game").innerHTML = "";
         document.getElementById("game").innerHTML += plantillas.printGame(obtainGames);
-
+    }else{
+        window.location.assign("/404");
+    }
 };
