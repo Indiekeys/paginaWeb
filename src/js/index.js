@@ -1,7 +1,7 @@
 "use strict";
 import * as script from "./firebase_auth.js";
 import * as db from "./firestore.js";
-import {queryGamesPlatform} from "./firestore.js";
+import {queryGamesPlatform, queryGamesSearch} from "./firestore.js";
 
 window.onload = ()=>{
 
@@ -85,6 +85,18 @@ window.onload = ()=>{
                 document.getElementById("plataforma").selectedIndex=0;
                 db.obtenerGames();
             }
+        },
+        false
+    )
+
+    document.getElementById("searchs").addEventListener(
+        "keyup",
+        (e) => {
+                document.getElementById("search").classList.remove("hint");
+                document.getElementById("order").selectedIndex=0;
+                document.getElementById("plataforma").selectedIndex=0;
+                document.getElementById("option").selectedIndex=0;
+                db.queryGamesSearch(e.target.value);
         },
         false
     )

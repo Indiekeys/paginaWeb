@@ -27,10 +27,19 @@ export const persistAccount = () => {
   setPersistence(auth, browserLocalPersistence);
 };
 
-export const createAccount = async (email, pass) => {
+export const createAccount = async (email, pass,nombre,apellidos) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, pass);
-    await sendEmailVerification(auth.currentUser);
+    await createUserWithEmailAndPassword(auth, email, pass).then(
+        async () => {
+          await sendEmailVerification(auth.currentUser).then(
+              async () => {
+                await setDisplayName(nombre, apellidos);
+                await setDefaultImageProfile();
+              }
+          );
+
+        }
+    );
     hideLoginError();
     persistAccount();
     correctAuth();
@@ -98,8 +107,9 @@ export const signAccount = async (email, pass) => {
 
 export const correctAuth = () => {
   onAuthStateChanged(auth, (user) => {
+    console.log(user);
     if (user != null) {
-      window.location.assign("/");
+      //window.location.assign("/");
     }
   });
 };
@@ -107,6 +117,7 @@ export const correctAuth = () => {
 export const comprobarAuth = () => {
   onAuthStateChanged(auth, (user) => {
     if (user != null) {
+      console.log(user);
       validar.printLogOut();
     } else {
       validar.printLogIn();

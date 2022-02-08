@@ -140,7 +140,6 @@ export const queryGamesPlatform = async (querys) => {
 
     document.getElementById("ig-panel-center").innerHTML ="";
     document.getElementById("ig-panel-center").innerHTML =`<div class="basic-panel products-trending" id="juegos"></div>`;
-    console.log(obtainGames.size);
     if(obtainGames.size==0){
 
         document.getElementById("juegos").innerHTML += plantillas.printNoGame();
@@ -171,7 +170,6 @@ export const queryGamesOption = async (querys) => {
 
     document.getElementById("ig-panel-center").innerHTML ="";
     document.getElementById("ig-panel-center").innerHTML =`<div class="basic-panel products-trending" id="juegos"></div>`;
-    console.log(obtainGames.size);
 
     if(obtainGames.size==0){
 
@@ -190,3 +188,35 @@ export const queryGamesOption = async (querys) => {
         });
     }
 };
+
+export const queryGamesSearch = async (querys) => {
+
+
+    const consulta = await query(
+        games,
+        where("nombre",">=",querys),
+
+    );
+    let obtainGames = await getDocs(consulta);
+
+    document.getElementById("ig-panel-center").innerHTML ="";
+    document.getElementById("ig-panel-center").innerHTML =`<div class="basic-panel products-trending" id="juegos"></div>`;
+
+    if(obtainGames.size==0){
+
+        document.getElementById("juegos").innerHTML += plantillas.printNoGame();
+
+    }else {
+
+        obtainGames.docs.map((documento) => {
+
+            if (documento.data().descripcion.Tipo == "Juego") {
+                document.getElementById("juegos").innerHTML += plantillas.printGames(documento);
+            } else {
+                document.getElementById("juegos").innerHTML += plantillas.printDLC(documento);
+            }
+
+        });
+    }
+};
+

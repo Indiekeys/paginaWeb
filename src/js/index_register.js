@@ -19,10 +19,7 @@ script.correctAuth();
             let pass2 = document.getElementById("repeat_pass").value;
 
             if(validar.validacionPass(pass,pass2)) {
-                if(await script.createAccount(correo, pass)){
-                    await script.setDisplayName(nombre, apellidos);
-                    await script.setDefaultImageProfile();
-                }
+                    await script.createAccount(correo, pass,nombre,apellidos);
             }else{
                 console.log("Las contraseñas no coinciden");
                 document.getElementById("messageError").innerHTML = "Ha surgido un error inesperado, inténtelo de nuevo";

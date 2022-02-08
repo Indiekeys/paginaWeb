@@ -1376,3 +1376,23 @@ padding: 20px;
 #ningunJuego{
     margin-bottom: 40px;
 }
+
+#searchs{
+    border-radius: 20px;
+    width: 500px;
+    height: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+    #searchs{
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #searchs{
+        border-radius: 20px;
+        width: 300px;
+        height: 40px;
+    }
+}
