@@ -31,9 +31,9 @@ script.correctAuth();
     document.getElementById("google").addEventListener(
         "click",
         async () => {
-            if(await script.authGoogle()){
-                await script.setDefaultImageProfile();
-            }
+            await script.authGoogle().then(async () => {
+              await script.setDefaultImageProfile();
+            });
         },
         false
     )
@@ -41,9 +41,9 @@ script.correctAuth();
     document.getElementById("facebook").addEventListener(
         "click",
         async () => {
-            if(await script.authFacebook()){
-                await script.setDefaultImageProfile();
-            }
+            await script.authFacebook().then(async () => {
+              await script.setDefaultImageProfile();
+            });
         },
         false
     )

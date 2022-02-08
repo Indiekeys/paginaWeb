@@ -15,6 +15,7 @@ import {
   sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import * as validar from "./validacion.js";
+import {Usuario} from "./Usuario.js";
 
 const auth = getAuth(app);
 
@@ -22,6 +23,7 @@ const providerG = new GoogleAuthProvider(app);
 const providerF = new FacebookAuthProvider(app);
 const divError = document.getElementById("divError");
 const messageError = document.getElementById("messageError");
+const usuario = new Usuario(auth);
 
 export const persistAccount = () => {
   setPersistence(auth, browserLocalPersistence);
@@ -31,13 +33,12 @@ export const createAccount = async (email, pass,nombre,apellidos) => {
   try {
     await createUserWithEmailAndPassword(auth, email, pass).then(
         async () => {
-          await sendEmailVerification(auth.currentUser).then(
+          await sendEmailVerification(usuario.getUsuario()).then(
               async () => {
-                await setDisplayName(nombre, apellidos);
-                await setDefaultImageProfile();
+                await usuario.setNombre(nombre,apellidos);
+                await usuario.setPhotoURL("https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b");
               }
           );
-
         }
     );
     hideLoginError();
@@ -106,10 +107,12 @@ export const signAccount = async (email, pass) => {
 };
 
 export const correctAuth = () => {
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     console.log(user);
     if (user != null) {
-      //window.location.assign("/");
+      setTimeout(() => {
+        window.location.assign("/");
+      }, 1000);
     }
   });
 };
@@ -133,22 +136,10 @@ export const log_out = async () => {
   }
 };
 
-export const setDisplayName = async (nombre,apellidos) => {
-  try{
-    updateProfile(auth.currentUser, {
-      displayName:  nombre + " " + apellidos,
-    });
-  }catch (error) {
-    console.log(error);
-  }
-}
-
 export const setDefaultImageProfile = () => {
-  try{
-    updateProfile(auth.currentUser, {
+    updateProfile(usuario.getUsuario(), {
       photoURL: "https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b",
+    }).catch(() => {
+
     });
-  }catch (error) {
-    console.log(error);
-  }
 }
