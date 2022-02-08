@@ -278,12 +278,12 @@
     background-position: -6px -75px
 }
 
-.badge.Ubisoft-connect {
+.badge.Ubisoft {
     background-color: #00a2ff;
     background-position: -7px -38px
 }
 
-.badge.Battle-net {
+.badge.Battle {
     background-color: #2e64ca;
     background-position: -6px -110px
 }
@@ -303,7 +303,7 @@
     background-position: -6px -231px
 }
 
-.badge.Gog-com {
+.badge.Gog {
     background-color: #ae00ff;
     background-position: -5px -268px
 }
@@ -328,7 +328,7 @@
     background-position: -2px -488px
 }
 
-.badge.Epic-games {
+.badge.Epic {
     background-color: #0078f2;
     background-position: -2px -522px
 }
@@ -1333,4 +1333,46 @@ padding: 20px;
     -webkit-filter: grayscale(1); /* Webkit */
     filter: gray(1);
     filter: grayscale(1);
+}
+
+.select-css {
+
+    line-height: 1.3;
+    width: 220px;
+    height: 70px;
+    box-sizing: border-box;
+    margin: 10px auto;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+    border-radius: .3em;
+}
+
+.selects{
+    display: flex;
+}
+
+.hint{
+    display: none;
+}
+
+#botonJuegos{
+    line-height: 1.3;
+    color: black;
+    width: 220px;
+    height: 70px;
+    box-sizing: border-box;
+    margin: 40px auto;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+    border-radius: .3em;
+    padding: 10px;
+    font-size: 17px;
+}
+
+#search{
+    margin-bottom: 20px;
+}
+
+#ningunJuego{
+    margin-bottom: 40px;
 }

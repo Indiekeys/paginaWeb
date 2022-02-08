@@ -17,7 +17,7 @@
         <div class="container"><a class="navbar-brand" href="/">Company Name</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" id="todos">First Item</a></li>
                     <li  class="nav-item"><a id="sign_out" class="nav-link">Second Item</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Dropdown </a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
@@ -29,6 +29,42 @@
 
     <div id="ig-main-container">
         <div class="ig-wrapper ig-mainwrapper mainshadow mt-5">
+
+            <div id="search" class="search-filters-container hint">
+                <div class="selects">
+
+                    <select id="plataforma" class="select-css">
+                        <option id="restartPlataforma" value="" selected>Seleccione una plataforma</option>
+                        <option value="Steam">Steam</option>
+                        <option value="Origin">Origin</option>
+                        <option value="Gog">Gog</option>
+                        <option value="Epic">Epic</option>
+                        <option value="Rockstar">Rockstar</option>
+                        <option value="Ubisoft">Ubisoft</option>
+                        <option value="Battle">Battle</option>
+                    </select>
+
+                    <select id="option" class="select-css">
+                        <option id="restartOption" value="" selected>Seleccione una Opción</option>
+                        <option value="todo">Juegos y DLC</option>
+                        <option value="DLC">Solo DLC</option>
+                        <option value="Juego">Solo Juegos</option>
+
+                    </select>
+
+                    <select id="order" class="select-css">
+                        <option id="restartOrden" value="" selected>Seleccione un orden</option>
+                        <option value="precio:asc">Precio ↑ (Sin descuento)</option>
+                        <option value="precio:desc">Precio ↓ (Sin descuento)</option>
+                        <option value="descuento:asc">Descuento ↑</option>
+                        <option value="descuento:desc">Descuento ↓</option>
+                        <option value="descripcion.fechaLanzamiento:asc">Fecha de lanzamiento ↑</option>
+                        <option value="descripcion.fechaLanzamiento:desc">Fecha de lanzamiento ↓</option>
+
+                    </select>
+
+                </div>
+            </div>
 
                 <div id="ig-panel-center" >
                     <div class="title-block">

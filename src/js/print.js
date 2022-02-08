@@ -42,12 +42,13 @@ export const printGame = (game) => {
         let formatted_date = date.getDate() + " de " + months[date.getMonth()] + " del " + date.getFullYear()
         return formatted_date;
     }
+    document.getElementById("backgroundLink").style=`background: linear-gradient(to bottom, #1d201f 0px, transparent 150px), url(${game.data().fondo}) center 0 no-repeat  #1d201f;`;
     let fechaFinal = formatDate(fecha);
     let dlc="";
     let dlcNoStock="";
     if(game.data().descripcion.Tipo=="DLC"){
         dlc=`<img src="/assets/img/dlc.png" class="dlc" alt="DLC">`
-        dlcNoStock= `<img src="/assets/img/dlc.png" className="dlc noStock" alt="DLC">`;
+        dlcNoStock= `<img src="/assets/img/dlc.png" class="dlc noStock" alt="DLC">`;
     }
 
     if(game.data().keys.length==0) {
@@ -191,4 +192,10 @@ export const printGame = (game) => {
             </div>
           </div>`
     }
+};
+
+export const printNoGame = () => {
+
+    return `<div><br><h2 id="ningunJuego">No se ha podido encontrar ningún Juego =(</h2><a href="#" class="boton" id="botonJuegos" >Click aquí para ver todo el catálogo</a></div>`
+
 };
