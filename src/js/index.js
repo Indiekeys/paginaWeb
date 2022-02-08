@@ -6,11 +6,12 @@ import {queryGamesPlatform, queryGamesSearch} from "./firestore.js";
 window.onload = ()=>{
 
 
-    script.comprobarAuth();
+    //script.comprobarAuth();
     db.gamesDate();
     db.obtenerMasDescuento();
     db.obtenerDlc();
 
+    /*
     document.getElementById("log_out").addEventListener(
         "click",
         (e) => {
@@ -18,7 +19,7 @@ window.onload = ()=>{
             script.log_out();
         },
         false
-    )
+    )*/
 
     document.getElementById("plataforma").addEventListener(
         "change",
@@ -65,6 +66,7 @@ window.onload = ()=>{
         false
     )
 
+    /*
     document.getElementById("todos").addEventListener(
         "click",
         (e) => {
@@ -73,7 +75,7 @@ window.onload = ()=>{
             db.obtenerGames();
         },
         false
-    )
+    )*/
 
     document.addEventListener(
         "click",
@@ -100,6 +102,25 @@ window.onload = ()=>{
         },
         false
     )
+
+    document.getElementById("hola").addEventListener(
+        "click",
+        (e) => {
+            if(document.getElementById("submenu").classList.contains("block")){
+                e.target.classList.remove("active");
+                document.getElementById("submenu").classList.add("none");
+                document.getElementById("submenu").classList.remove("block");
+            }else{
+                e.target.classList.add("active");
+                document.getElementById("submenu").classList.remove("none");
+                document.getElementById("submenu").classList.add("block");
+            }
+
+        },
+        false
+    )
+
+
 
 
 }
