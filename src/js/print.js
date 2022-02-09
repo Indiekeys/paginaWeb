@@ -199,3 +199,10 @@ export const printNoGame = () => {
     return `<div><br><h2 id="ningunJuego">No se ha podido encontrar ningún Juego =(</h2><a href="#" class="boton" id="botonJuegos" >Click aquí para ver todo el catálogo</a></div>`
 
 };
+
+export const printAvatar = (auth) => {
+
+    return `<div class="avatar"><img src="${auth.photoURL}" class="ig-avatar"></div>`
+
+};
+

@@ -13,19 +13,31 @@
 
 <body class="act-product         ct-ES">
 <a class="fixed" id="backgroundLink"></a>
-<nav class="navbar navbar-expand-lg navigation-clean-button" id="nav">
-  <div class="container"><a class="navbar-brand" href="/">Company Name</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navcol-1">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">First Item</a></li>
-        <li  class="nav-item"><a id="sign_out" class="nav-link">Second Item</a></li>
-        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Dropdown </a>
-          <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-        </li>
-      </ul><span class="navbar-text actions"> <a id="login" class="login d-none" href="/login">Log In</a><a id="register" class="btn btn-light action-button d-none" role="button" href="/register">Sign Up</a></span><a id="log_out" class="btn btn-light action-button d-none" role="button">Log out</a></span>
+<header id="ig-header" class="header-container">
+  <div class="ig-wrapper wide">
+    <a class="navbar-brand" href="/">IndieKeys</a>
+
+    <div class="avatar-container" id="avatar">
+      <div class="avatar-main" id="imgAvatar">
+      </div>
+      <a for="ig-responsive-menu-drop" id="ig-responsive-menu-button" class="ig-responsive-menu-button" title="Menú de usuario">
+      </a>
+      <div class="submenu-container none" id="submenu">
+        <div class="ig-loginbox-wrapper ig-login-content-loggued">
+          <div class="avatar-submenu">
+          </div>
+          <a id="cuenta" class="ig-logged-link ig-logged-link-profile ig-show-loginbox d-none" href="/mi-cuenta" >Mi cuenta</a>
+          <a id="login" class="ig-logged-link ig-logged-link-profile ig-show-loginbox  d-none" href="/login">Log In</a>
+          <a id="register" class="ig-logged-link ig-logged-link-profile ig-show-loginbox d-none" role="button" href="/register">Sign Up</a>
+          <a id="log_out" class="ig-logged-link ig-logged-link-profile ig-show-loginbox d-none" role="button">Log out</a>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
+
+  </div>
+
+</header>
 
 
 <div id="game">

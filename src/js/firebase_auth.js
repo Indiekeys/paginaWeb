@@ -16,6 +16,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import * as validar from "./validacion.js";
 import {Usuario} from "./Usuario.js";
+import * as print from "./print.js";
 
 const auth = getAuth(app);
 
@@ -120,8 +121,8 @@ export const correctAuth = () => {
 export const comprobarAuth = () => {
   onAuthStateChanged(auth, (user) => {
     if (user != null) {
-      console.log(user);
       validar.printLogOut();
+      document.getElementById("imgAvatar").innerHTML=print.printAvatar(user);
     } else {
       validar.printLogIn();
     }
