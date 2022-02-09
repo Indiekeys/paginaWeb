@@ -4155,7 +4155,6 @@ a.ig-indies-description-tab-selected, a.ig-indies-description-tab:hover {
 
 .ig-logged-link {
     padding: 4px 4px 4px 35px;
-    background: url(/themes/igv1/modules/loginBox/images/loginbox-icons8.png) no-repeat;
     font-weight: 400;
     color: #fff;
     font-size: 13px;
@@ -20489,10 +20488,6 @@ body.is-debug .todolist {
     height: 15px
 }
 
-.partner-container .partner-interface-container .funds .details .active .detail .percentage.up, .partner-container .partner-interface-container .funds .details .past .detail .percentage.up, .partner-container .partner-interface-container .funds .details .preorder .detail .percentage.up {
-    color: #54c202;
-    background: url(/themes/igv1/modules/partner/images/up.svg) 100% no-repeat
-}
 
 @media screen and (max-width: 850px) {
     .partner-container .partner-interface-container .funds .details .active .detail .percentage.up, .partner-container .partner-interface-container .funds .details .past .detail .percentage.up, .partner-container .partner-interface-container .funds .details .preorder .detail .percentage.up {
@@ -20500,10 +20495,6 @@ body.is-debug .todolist {
     }
 }
 
-.partner-container .partner-interface-container .funds .details .active .detail .percentage.down, .partner-container .partner-interface-container .funds .details .past .detail .percentage.down, .partner-container .partner-interface-container .funds .details .preorder .detail .percentage.down {
-    color: #ff4343;
-    background: url(/themes/igv1/modules/partner/images/down.svg) 100% no-repeat
-}
 
 @media screen and (max-width: 850px) {
     .partner-container .partner-interface-container .funds .details .active .detail .percentage.down, .partner-container .partner-interface-container .funds .details .past .detail .percentage.down, .partner-container .partner-interface-container .funds .details .preorder .detail .percentage.down {

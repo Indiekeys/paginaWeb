@@ -15,11 +15,12 @@ window.onload = ()=>{
     document.getElementById("log_out").addEventListener(
         "click",
         (e) => {
-
             script.log_out();
+            document.getElementById("imgAvatar").innerHTML="";
         },
         false
     )
+
 
     document.getElementById("plataforma").addEventListener(
         "change",
@@ -66,7 +67,6 @@ window.onload = ()=>{
         false
     )
 
-    /*
     document.getElementById("todos").addEventListener(
         "click",
         (e) => {
@@ -75,7 +75,7 @@ window.onload = ()=>{
             db.obtenerGames();
         },
         false
-    )*/
+    )
 
     document.addEventListener(
         "click",
@@ -103,15 +103,15 @@ window.onload = ()=>{
         false
     )
 
-    document.getElementById("hola").addEventListener(
+    document.getElementById("avatar").addEventListener(
         "click",
         (e) => {
             if(document.getElementById("submenu").classList.contains("block")){
-                e.target.classList.remove("active");
+                document.getElementById("avatar").classList.remove("active");
                 document.getElementById("submenu").classList.add("none");
                 document.getElementById("submenu").classList.remove("block");
             }else{
-                e.target.classList.add("active");
+                document.getElementById("avatar").classList.add("active");
                 document.getElementById("submenu").classList.remove("none");
                 document.getElementById("submenu").classList.add("block");
             }
