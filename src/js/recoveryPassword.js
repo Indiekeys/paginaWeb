@@ -1,7 +1,6 @@
 "use strict";
 import { app } from "./firebase.js";
 import {getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
-import {Alerta} from "./alerta.js";
 const auth = getAuth(app);
 
 const MSG_ERRORES = {
@@ -18,9 +17,22 @@ export const recoveryPassword = () => {
   const email = document.getElementById("email").value;
   sendPasswordResetEmail(auth,email)
     .then(() => {
-      new Alerta("Se ha enviado un correo electrónico a su cuenta con las instrucciones para recuperar su contraseña.").success();
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Se ha enviado un correo electrónico a su cuenta con las instrucciones para recuperar su contraseña.",
+        showConfirmButton: false,
+        timer: 3000,
+      });
     }).catch(error => {
-      new Alerta(MSG_ERRORES[error.code]).error();
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: MSG_ERRORES[error.code],
+      showConfirmButton: false,
+      timer: 3000,
+    });
+
     });
 }
 

@@ -108,7 +108,6 @@ export const signAccount = async (email, pass) => {
 
 export const correctAuth = () => {
   onAuthStateChanged(auth, async (user) => {
-    console.log(user);
     if (user != null) {
       setTimeout(() => {
         window.location.assign("/");
@@ -128,6 +127,17 @@ export const comprobarAuth = () => {
   });
 };
 
+export const isNotLoggedIn = () => {
+  onAuthStateChanged(auth, async (user) => {
+    if (user === null) {
+      setTimeout(() => {
+        window.location.assign("/");
+      },1000);
+    }
+  });
+}
+
+
 export const log_out = async () => {
   try {
     await signOut(auth);
@@ -140,6 +150,5 @@ export const setDefaultImageProfile = () => {
     updateProfile(usuario.getUsuario(), {
       photoURL: "https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b",
     }).catch(() => {
-
     });
 }

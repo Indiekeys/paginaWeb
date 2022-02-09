@@ -6,12 +6,12 @@ import {queryGamesPlatform, queryGamesSearch} from "./firestore.js";
 window.onload = ()=>{
 
 
-    //script.comprobarAuth();
+    script.comprobarAuth();
     db.gamesDate();
     db.obtenerMasDescuento();
     db.obtenerDlc();
 
-    /*
+
     document.getElementById("log_out").addEventListener(
         "click",
         (e) => {
@@ -19,7 +19,7 @@ window.onload = ()=>{
             script.log_out();
         },
         false
-    )*/
+    )
 
     document.getElementById("plataforma").addEventListener(
         "change",

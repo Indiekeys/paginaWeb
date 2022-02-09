@@ -21,7 +21,6 @@ script.correctAuth();
             if(validar.validacionPass(pass,pass2)) {
                     await script.createAccount(correo, pass,nombre,apellidos);
             }else{
-                console.log("Las contraseñas no coinciden");
                 document.getElementById("messageError").innerHTML = "Ha surgido un error inesperado, inténtelo de nuevo";
             }
         },

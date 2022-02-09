@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8082;
+const port = 80;
 app.use('/assets',express.static('assets'));
 app.use("/src",express.static("src"));
 app.get('/', (req, res) => {
@@ -21,6 +21,10 @@ app.get('/recovery-password',(req,res) => {
 
 app.get("/game/:id",(req, res) => {
     res.sendFile(__dirname + '/paginas/juego.html');
+});
+
+app.get("/mi-cuenta",(req, res) => {
+    res.sendFile(__dirname + '/paginas/miCuenta.html');
 });
 
 
