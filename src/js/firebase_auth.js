@@ -17,9 +17,9 @@ import {
 import * as validar from "./validacion.js";
 import {Usuario} from "./Usuario.js";
 import * as print from "./print.js";
+import {crearWishlist} from "./firestore.js";
 
 const auth = getAuth(app);
-
 const providerG = new GoogleAuthProvider(app);
 const providerF = new FacebookAuthProvider(app);
 const divError = document.getElementById("divError");
@@ -38,6 +38,7 @@ export const createAccount = async (email, pass,nombre,apellidos) => {
               async () => {
                 await usuario.setNombre(nombre,apellidos);
                 await usuario.setPhotoURL("https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b");
+                await crearWishlist();
               }
           );
         }

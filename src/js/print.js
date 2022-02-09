@@ -37,7 +37,8 @@ export const printGame = (game) => {
     let precioTotal = game.data().precio-((game.data().descuento*game.data().precio)/100);
     let fecha = new Date(game.data().descripcion.fechaLanzamiento.seconds*1000);
     const months = ["Enero", "Febrero", "Marzo","Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
+    let titulo = game.data().nombre;
+    document.title = "Comprar " + titulo;
     const formatDate = (date)=>{
         let formatted_date = date.getDate() + " de " + months[date.getMonth()] + " del " + date.getFullYear()
         return formatted_date;

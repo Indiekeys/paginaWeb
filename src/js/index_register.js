@@ -1,7 +1,7 @@
 "use strict";
 import * as script from "./firebase_auth.js";
 import * as validar from "./validacion.js";
-
+import {crearWishlist} from "./firestore.js";
 window.onload = () => {
 
 script.hideLoginError();
@@ -32,6 +32,7 @@ script.correctAuth();
         async () => {
             await script.authGoogle().then(async () => {
               await script.setDefaultImageProfile();
+              await crearWishlist();
             });
         },
         false
@@ -42,6 +43,7 @@ script.correctAuth();
         async () => {
             await script.authFacebook().then(async () => {
               await script.setDefaultImageProfile();
+              await crearWishlist();
             });
         },
         false

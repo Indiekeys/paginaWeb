@@ -15,6 +15,10 @@ export class Usuario {
     return this.auth.currentUser;
   }
 
+  getUID() {
+    return this.auth.currentUser.uid;
+  }
+
   getNombre() {
     return this.auth.currentUser.displayName;
   }

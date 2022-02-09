@@ -16,9 +16,14 @@ import {
     limit,
     increment,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+import {Usuario} from "./Usuario.js";
 
+const auth = getAuth(app);
 const db = getFirestore(app);
 const games = collection(db,"games");
+const wishlist = collection(db,"wishlist");
+const user = new Usuario(auth);
 
 export const gamesDate = async () => {
     let date = new Date();
@@ -220,3 +225,19 @@ export const queryGamesSearch = async (querys) => {
     }
 };
 
+
+export const crearWishlist = () => {
+    onAuthStateChanged(auth, async (usuario) => {
+        if(usuario !== null){
+            await addDoc(wishlist, {
+                uidUser: user.getUID(),
+                juegos: []
+            });
+        }
+    });
+}
+
+export const addGameToWishlist = (idGame) =>
+{
+    
+}
