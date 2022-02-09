@@ -121,7 +121,7 @@ export const correctAuth = () => {
 export const comprobarAuth = () => {
   onAuthStateChanged(auth, (user) => {
     if (user != null) {
-      console.log(user)
+      console.log(user);
       validar.printLogOut();
       document.getElementById("imgAvatar").innerHTML=print.printAvatar(user);
     } else {

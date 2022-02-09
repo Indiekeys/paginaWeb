@@ -2,14 +2,16 @@
 import {app} from './firebase.js';
 import {getAuth } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import {Usuario} from './Usuario.js';
-import {isNotLoggedIn} from './firebase_auth.js';
+import {isNotLoggedIn,log_out,comprobarAuth} from './firebase_auth.js';
+
 window.onload = () => {
     const auth = getAuth(app);
     const user = new Usuario(auth);
+    comprobarAuth();
     isNotLoggedIn();
 
     document.getElementById("deleteAccount").addEventListener(
-        "submit",
+        "click",
         async (e) => {
             e.preventDefault();
             if(user.getProviderId() === "password"){
@@ -57,6 +59,32 @@ window.onload = () => {
         },
         false
     );
+
+    document.getElementById("log_out").addEventListener(
+        "click",
+        (e) => {
+            log_out();
+            document.getElementById("imgAvatar").innerHTML="";
+        },
+        false
+    )
+
+    document.getElementById("avatar").addEventListener(
+        "click",
+        (e) => {
+            if(document.getElementById("submenu").classList.contains("block")){
+                document.getElementById("avatar").classList.remove("active");
+                document.getElementById("submenu").classList.add("none");
+                document.getElementById("submenu").classList.remove("block");
+            }else{
+                document.getElementById("avatar").classList.add("active");
+                document.getElementById("submenu").classList.remove("none");
+                document.getElementById("submenu").classList.add("block");
+            }
+
+        },
+        false
+    )
 
 
 }
