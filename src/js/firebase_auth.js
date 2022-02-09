@@ -120,6 +120,7 @@ export const correctAuth = () => {
 export const comprobarAuth = () => {
   onAuthStateChanged(auth, (user) => {
     if (user != null) {
+      console.log(user)
       validar.printLogOut();
       document.getElementById("imgAvatar").innerHTML=print.printAvatar(user);
     } else {
@@ -151,5 +152,10 @@ export const setDefaultImageProfile = () => {
     updateProfile(usuario.getUsuario(), {
       photoURL: "https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b",
     }).catch(() => {
+      try{
+        updateProfile(usuario.getUsuario(), {
+          photoURL: "https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FiconProfile%2Fcropped-150-150-866190.jpg?alt=media&token=a02ccaa2-7914-485b-81ae-7abee13d338b",
+        });
+      }catch (error) {}
     });
 }

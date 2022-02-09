@@ -5,7 +5,7 @@ return `
                         <div class="item force-badge" id="ig-preorders-item-1">
                             <a class="cover" href="/game/${games.id}-${titulo}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
                                 <div class="badge ${games.data().plataforma}"></div>
-                                <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
+                                <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}" loading="lazy">
                                 <div class="shadow">
                                     <div class="discount">${games.data().descuento}%</div>
                                     <div class="price">${precioTotal.toFixed(2)}€</div>
@@ -22,7 +22,7 @@ export const printDLC = (games) => {
                         <div class="item force-badge" id="ig-preorders-item-1">
                             <a class="cover" href="/game/${games.id}-${titulo}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
                                 <div class="badge ${games.data().plataforma}"></div>
-                                <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}">
+                                <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}" loading="lazy">
                                 <img src="/assets/img/dlc.png" class="dlc" alt="DLC">
                                 <div class="shadow">
                                     <div class="discount">${games.data().descuento}%</div>
