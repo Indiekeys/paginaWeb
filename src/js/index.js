@@ -1,7 +1,7 @@
 "use strict";
 import * as script from "./firebase_auth.js";
 import * as db from "./firestore.js";
-import {queryGamesPlatform, queryGamesSearch} from "./firestore.js";
+
 
 window.onload = ()=>{
 
@@ -72,6 +72,7 @@ window.onload = ()=>{
         (e) => {
 
             document.getElementById("search").classList.remove("hint");
+            document.getElementById("option").selectedIndex=0;
             db.obtenerGames();
         },
         false
@@ -119,6 +120,66 @@ window.onload = ()=>{
         },
         false
     )
+
+    document.getElementById("todosDLC").addEventListener(
+        "click",
+        (e) => {
+
+            document.getElementById("search").classList.remove("hint");
+            document.getElementById("option").selectedIndex=2;
+            db.queryGamesOption("DLC");
+        },
+        false
+    )
+
+    document.getElementById("todosJuegos").addEventListener(
+        "click",
+        (e) => {
+
+            document.getElementById("search").classList.remove("hint");
+            document.getElementById("option").selectedIndex=3;
+            db.queryGamesOption("Juego");
+        },
+        false
+    )
+
+
+    document.getElementById("todoRecientes").addEventListener(
+        "click",
+        (e) => {
+
+            document.getElementById("search").classList.remove("hint");
+            document.getElementById("order").selectedIndex=6;
+            db.queryGames("descripcion.fechaLanzamiento:desc");
+        },
+        false
+    )
+
+
+    document.getElementById("todoDescuentos").addEventListener(
+        "click",
+        (e) => {
+
+            document.getElementById("search").classList.remove("hint");
+            document.getElementById("order").selectedIndex=4;
+            db.queryGames("descuento:desc");
+        },
+        false
+    )
+
+    document.getElementById("DlcRecientes").addEventListener(
+        "click",
+        (e) => {
+
+            document.getElementById("search").classList.remove("hint");
+            document.getElementById("option").selectedIndex=2;
+            db.queryGamesOption("DLC");
+        },
+        false
+    )
+
+
+
 
 
 

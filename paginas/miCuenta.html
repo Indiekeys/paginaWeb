@@ -34,33 +34,34 @@
 
 </header>
 </div>
-<div id="ig-panel-center" >
-    <div class="ig-wrapper ig-mainwrapper mainshadow  rounded">
-        <div class="ig-sections-main-header ig-sections-main-header-top">Configuración</div>
+<div id="ig-main-container" class="mt-5">
+    <div id="ig-panel-center" >
+        <div class="ig-wrapper ig-mainwrapper mainshadow  rounded">
+            <div class="ig-sections-main-header ig-sections-main-header-top">Configuración</div>
 
 
-        <div class="ig-sections-main-content account">
+            <div class="ig-sections-main-content account">
 
-            <div id="cambiarContraseña">
-                <h2>Cambiar tu contraseña</h2>
-                <div class="hideShowPassword-wrapper" style="position: relative; display: inline-block; vertical-align: baseline; margin: 10px 7px;"><input placeholder="Tu contraseña actual" autocomplete="off" id="ik-pass1" class="contra" type="password" style="padding-right: 46px;"></div>
-                <div id="divContra" class="hideShowPassword-wrapper" style="position: relative; display: inline-block; vertical-align: baseline; margin: 10px 7px;"><input placeholder="Tu nueva contraseña" autocomplete="off" id="ik-pass2" class="contra" type="password" name="password"  style="padding-right: 46px;"><input placeholder="Tu nueva contraseña" autocomplete="off" id="ik-pass3" class="contra" type="password" name="password"  style="padding-right: 46px;"></div>
-                <div id="cambiarContra"><a class="ig-account-validate button" href="#">Cambiar contraseña</a></div>
+                <div id="cambiarContraseña">
+                    <h2>Cambiar tu contraseña</h2>
+                    <div class="hideShowPassword-wrapper" style="position: relative; display: inline-block; vertical-align: baseline; margin: 10px 7px;"><input placeholder="Tu contraseña actual" autocomplete="off" id="ik-pass1" class="contra" type="password" style="padding-right: 46px;"></div>
+                    <div id="divContra" class="hideShowPassword-wrapper" style="position: relative; display: inline-block; vertical-align: baseline; margin: 10px 7px;"><input placeholder="Tu nueva contraseña" autocomplete="off" id="ik-pass2" class="contra" type="password" name="password"  style="padding-right: 46px;"><input placeholder="Tu nueva contraseña" autocomplete="off" id="ik-pass3" class="contra" type="password" name="password"  style="padding-right: 46px;"></div>
+                    <div id="cambiarContra"><a class="ig-account-validate button mb-2" href="#">Cambiar contraseña</a></div>
+
+                </div>
+
+                <div id="eliminar">
+                    <h2>Eliminar cuenta</h2>
+                    <p>Esta acción eliminará tu cuenta de Indiekeys. ¿Estás seguro?</p>
+                </div>
+                <div id="eliminarContra"><a id="deleteAccount" class="ig-account-validate button mb-2" href="#">Eliminar Cuenta</a></div>
 
             </div>
-
-            <div id="eliminar">
-                <h2>Eliminar cuenta</h2>
-                <p>Esta acción eliminará tu cuenta de Indiekeys. ¿Estás seguro?</p>
-            </div>
-            <div id="eliminarContra"><a id="deleteAccount" class="ig-account-validate button" href="#">Eliminar Cuenta</a></div>
 
         </div>
+    </div>
 
     </div>
-</div>
-
-</div>
 </div>
 <div class="footer-container" style="background: #112232; box-shadow: 0px -20px 40px 50px #112232, 0px 362px 0 120px #112232;">
 
@@ -86,7 +87,7 @@
         </div>
     </footer>
 </div>
-
+</div>
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 <script type="module" src="../src/js/cuenta-usuario.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
