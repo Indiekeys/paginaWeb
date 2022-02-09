@@ -1674,8 +1674,6 @@ padding: 20px;
 .header-container .ig-wrapper .ig-logo {
     width: 140px;
     height: 37px;
-    background: url(/assets/img/indie.png) center 0 no-repeat;
-    background-size: 100%;
     cursor: pointer;
     margin: 20px 0
 }
@@ -2067,5 +2065,130 @@ a{
     transition: all .1s ease
 }
 
+.ig-panel-center-semiwide .ig-sections-main-content, .ig-panel-center-semiwide .ig-sections-main-header, .ig-panel-center-wide .ig-sections-main-content, .ig-panel-center-wide .ig-sections-main-header {
+    width: auto
+}
+
+body.darkmode #hipay_tpp_payment_form .hipay_tpp_control input[type=text], body.darkmode #ig-country, body.darkmode #ig-giftcard-input, body.darkmode #ig-pm-filters select, body.darkmode #ig-productbuy-login .ig-login-input, body.darkmode #ig-wishlist-sortby, body.darkmode #ig-writereview-review, body.darkmode .account .ig-checkbox .box, body.darkmode .feedbackbox .slide .unit, body.darkmode .ig-account-fields, body.darkmode .ig-bannerstudio-controls select, body.darkmode .ig-bannerstudio textarea, body.darkmode .ig-contact-textarea, body.darkmode .ig-feedback-post-input, body.darkmode .ig-history-action-com-textarea, body.darkmode .ig-login-input, body.darkmode .ig-pm-morefilters-sminput, body.darkmode .ig-register-fields, body.darkmode .input-review-bad, body.darkmode .input-review-good, body.darkmode .livePartners .youtube .item, body.darkmode .onoffswitch-inner:before, body.darkmode .pagination li a, body.darkmode .partner-container .partner-interface-container .funds .balance, body.darkmode .partner-container .partner-interface-container .funds .details > *, body.darkmode .partner-container .partner-interface-container .giveaways, body.darkmode .partner-container .partner-interface-container .invoices, body.darkmode .partner-container .partner-interface-container .purchases, body.darkmode .partner-container .partner-interface-container .switch-partner, body.darkmode .partner-container .partner-interface-container .visits, body.darkmode .payment-platform-selector, body.darkmode .payment-table thead tr, body.darkmode .search-title .advanced, body.darkmode .search-title .advanced span, body.darkmode .search-title .select2 .selection .select2-selection, body.darkmode .search-title .toggle:before, body.darkmode .search-wrapper-wishlist .ig-checkbox .box, body.darkmode .trust-container, body.darkmode input.ig-affiliate-input {
+    background: #1f1f1f
+}
 
 
+
+body.darkmode #hipay_tpp_payment_form .hipay_tpp_control input[type=text], body.darkmode #ig-country, body.darkmode #ig-giftcard-input, body.darkmode #ig-pm-filters select, body.darkmode #ig-productbuy-login .ig-login-input, body.darkmode #ig-wishlist-sortby, body.darkmode #ig-writereview-review, body.darkmode .account .ig-checkbox .box, body.darkmode .feedbackbox .slide .unit, body.darkmode .ig-account-fields, body.darkmode .ig-bannerstudio-controls select, body.darkmode .ig-bannerstudio textarea, body.darkmode .ig-contact-textarea, body.darkmode .ig-feedback-post-input, body.darkmode .ig-history-action-com-textarea, body.darkmode .ig-login-input, body.darkmode .ig-pm-morefilters-sminput, body.darkmode .ig-register-fields, body.darkmode .input-review-bad, body.darkmode .input-review-good, body.darkmode .livePartners .youtube .item, body.darkmode .onoffswitch-inner:before, body.darkmode .pagination li a, body.darkmode .partner-container .partner-interface-container .funds .balance, body.darkmode .partner-container .partner-interface-container .funds .details > *, body.darkmode .partner-container .partner-interface-container .giveaways, body.darkmode .partner-container .partner-interface-container .invoices, body.darkmode .partner-container .partner-interface-container .purchases, body.darkmode .partner-container .partner-interface-container .switch-partner, body.darkmode .partner-container .partner-interface-container .visits, body.darkmode .payment-platform-selector, body.darkmode .payment-table thead tr, body.darkmode .search-title .advanced, body.darkmode .search-title .advanced span, body.darkmode .search-title .select2 .selection .select2-selection, body.darkmode .search-title .toggle:before, body.darkmode .search-wrapper-wishlist .ig-checkbox .box, body.darkmode .trust-container, body.darkmode input.ig-affiliate-input {
+    background: #1f1f1f
+}
+
+body.darkmode #hipay_tpp_payment_form .hipay_tpp_control input[type=text], body.darkmode #ig-pm-filters label span, body.darkmode #ig-pm-filters select, body.darkmode #ig-writereview-review, body.darkmode .contact .replyform textarea, body.darkmode .ig-account-fields, body.darkmode .ig-contact-textarea, body.darkmode .ig-pm-morefilters-sminput, body.darkmode .input-review-bad, body.darkmode .input-review-good {
+    border: 1px solid #1f1f1f
+}
+
+@media screen and (max-width: 800px) {
+    .act-account .ig-account-fields {
+        width: calc(100% - 12px);
+        margin: 10px 0
+    }
+}
+
+.account{
+    text-align: center;
+}
+
+.account p{
+    color: black;
+}
+
+
+.order-container .button {
+    padding: 10px 25px;
+    margin: 15px;
+    font-size: 15px;
+    border-radius: 100px;
+    transition: all 1s, background-color .1s
+}
+
+@media screen and (max-width: 550px) {
+    .order-container .button {
+        margin: 15px 0;
+        left: 50%
+    }
+}
+
+.livestream .container .button {
+    background: #ff5400;
+    color: #fff;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-weight: 400;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1;
+    white-space: nowrap
+}
+
+.ig-sections-main-content {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #777;
+}
+
+.ig-sections-header, .ig-sections-main-header {
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    display: table;
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-weight: 700;
+    margin: 0 0 15px;
+}
+
+.button {
+    background: #2e6fd5;
+    color: #fff;
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-weight: 700;
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #00a2ff;
+    color: white;
+}
+
+.contra {
+    border: 1px solid #a7a7a7;
+    color: #0015ff;
+    font-weight: 700;
+    font-family: arial,helvetica,sans-serif;
+    font-size: 13px;
+    height: 38px;
+    width: 300px;
+    border-radius: 5px;
+    background: #fff;
+    padding-right: 46px;
+
+
+}
+
+.contra input[name*="password"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#divContra input{
+    margin: 20px;
+}
+
+.account h2{
+    padding: 20px;
+}
