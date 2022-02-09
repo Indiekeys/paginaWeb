@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi cuenta Indiekeys</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
+</head>
+<body>
+<a class="fixed" id="backgroundLink" title="Monster Hunter Rise" style="background: linear-gradient(to bottom, #1d201f 0px, transparent 150px), url(../assets/img/body.png) center 0 no-repeat  #1d201f;"></a>
+<nav class="navbar navbar-expand-lg navigation-clean-button" id="nav">
+    <div class="container"><a class="navbar-brand" href="/">Company Name</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link active" href="#" id="todos">First Item</a></li>
+                <li  class="nav-item"><a id="sign_out" class="nav-link">Second Item</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Dropdown </a>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                </li>
+                <input id="searchs" type="search" placeholder="Search..." autofocus required />
+            </ul><span class="navbar-text actions"> <a id="login" class="login d-none" href="/login">Log In</a><a id="register" class="btn btn-light action-button d-none" role="button" href="/register">Sign Up</a></span><a id="log_out" class="btn btn-light action-button d-none" role="button">Log out</a></span>
+        </div>
+    </div>
+
+</nav>
+<div id="ig-main-container">
+    <div id="home-top-banner-wrapper"></div>
+    <div class="ig-wrapper ig-mainwrapper mainshadow rounded mt-5">
+        <div id="ig-panel-center">
+            <p>Configuración</p>
+            <form id="deleteAccount">
+                <h2>Eliminar cuenta</h2>
+                <p>Esta acción eliminará tu cuenta de Indiekeys. ¿Estás seguro?</p>
+                <button type="submit" class="btn btn-primary mt-2">Eliminar cuenta</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer-container" style="background: #112232; box-shadow: 0px -20px 40px 50px #112232, 0px 362px 0 120px #112232;">
+
+    <footer class="footer">
+        <div class="ig-wrapper">
+            <div class="links">
+                <a class="sublinks" href="https://www.instant-gaming.com/es/terminos-y-condiciones/">Términos y condiciones</a>
+                <a class="sublinks" href="https://www.instant-gaming.com/es/pagos-seguros/">Pago seguro</a>
+                <a class="sublinks" href="https://www.instant-gaming.com/es/politicas-de-privacidad/">Política de privacidad </a>
+                <a class="sublinks  ig-contact-btn" href="https://www.instant-gaming.com/es/contactanos/">Contacto</a>
+                <a class="sublinks" href="https://www.instant-gaming.com/es/preguntas-mas-frecuentes/">FAQ</a>
+            </div>
+        </div>
+        <div class="socials">
+            <a class="instagram" href="https://www.instagram.com/instantgaminges/" target="_blank" rel="noopener">
+                <i class="logo"></i>
+                <i class="logo2"></i>
+            </a>
+            <a class="twitter" href="https://twitter.com/InstantGamingES" target="_blank" rel="noopener"></a>
+            <a class="youtube" href="https://www.youtube.com/channel/UCdNKJbUfHrf3__BjoFVi8qw" target="_blank" rel="noopener"></a>
+            <a class="facebook" href="https://www.facebook.com/Instant.Gaming.es/?brand_redir=DISABLE" target="_blank" rel="noopener"></a>
+            <a class="twitch" href="https://twitch.tv/instantgaminges" target="_blank" rel="noopener"></a>
+        </div>
+    </footer>
+</div>
+
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="module" src="../src/js/cuenta-usuario.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
