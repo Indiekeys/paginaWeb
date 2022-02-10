@@ -3,7 +3,7 @@ import {app} from './firebase.js';
 import {getAuth } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import {Usuario} from './Usuario.js';
 import {isNotLoggedIn,log_out,comprobarAuth} from './firebase_auth.js';
-
+import {eliminarWishlist} from './firestore.js';
 window.onload = () => {
     const auth = getAuth(app);
     const user = new Usuario(auth);
@@ -24,14 +24,18 @@ window.onload = () => {
                         autocorrect: 'off',
                         autocomplete: 'off'
                     },
+                    showConfirmButton: true,
+                    confirmButtonText: 'Eliminar',
                 });
-                user.reauthenticateUser(password).then(() => {
-                    user.deleteAccount();
+                user.reauthenticateUser(password).then(async () => {
+                    await eliminarWishlist();
+                    await user.deleteAccount();
                 }).catch(() => {
                     Swal.fire({
                         icon: 'error',
                         title: 'Contraseña incorrecta',
                         text: 'Por favor, ingrese la contraseña correcta para eliminar su cuenta',
+                        showConfirmButton: false,
                         timer: 2000
                     });
                 });
@@ -45,20 +49,41 @@ window.onload = () => {
                         autocorrect: 'off',
                         autocomplete: 'off'
                     },
+                    showConfirmButton: true,
+                    confirmButtonText: 'Eliminar',
                 });
 
-                email === user.getEmail() ? user.deleteAccount() : Swal.fire({
-                    icon: 'error',
-                    title: 'Correo electrónico incorrecto',
-                    text: 'Por favor, ingrese el correo electrónico correcto para eliminar su cuenta',
-                    timer: 2000
-                });
-
+                if(email === user.getEmail()){
+                    await eliminarWishlist();
+                    await user.deleteAccount();
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Correo electrónico incorrecto',
+                        text: 'Por favor, ingrese el correo electrónico correcto para eliminar su cuenta',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
             }
 
         },
         false
     );
+
+
+    document.getElementById("cambiarContra").addEventListener(
+        "click",
+        async (e) => {
+            e.preventDefault();
+            user.updatePassword(
+                document.getElementById("ik-pass1").value,
+                document.getElementById("ik-pass2").value,
+                document.getElementById("ik-pass3").value
+            )
+        },
+    )
+
 
     document.getElementById("log_out").addEventListener(
         "click",

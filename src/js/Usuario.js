@@ -1,4 +1,5 @@
 "use strict";
+//Se importan dependencias.
 import {
   updateProfile,
   reauthenticateWithCredential,
@@ -6,6 +7,11 @@ import {
   EmailAuthProvider,
   deleteUser,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+
+/**
+ * Se crea la clase usuario, la cual recibe por parametro un auth, esta clase sirve para obtener datos de la cuenta del usuario
+ * y también para actualizar los datos de la cuenta del usuario.
+ */
 export class Usuario {
   constructor(auth) {
     this.auth = auth;
@@ -121,31 +127,29 @@ export class Usuario {
       });
   }
 
-  deleteAccount(){
-    deleteUser(this.auth.currentUser).then(
-        () => {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Cuenta eliminada correctamente",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          setTimeout(() => {
-            window.location.assign("/");
-          }, 2000);
-        }
-    ).catch(
-        () => {
-          Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "Error al eliminar la cuenta",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-    );
+  deleteAccount() {
+    deleteUser(this.auth.currentUser)
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Cuenta eliminada correctamente",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        setTimeout(() => {
+          window.location.assign("/");
+        }, 2000);
+      })
+      .catch(() => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error al eliminar la cuenta",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   }
 
   reauthenticateUser(password) {
@@ -156,7 +160,7 @@ export class Usuario {
     return reauthenticateWithCredential(this.auth.currentUser, credential);
   }
 }
-
+//Constante la cual contiene los errores de reautenticación
 const REAUTHENTICATE_ERRORS = {
   "auth/user-mis-match": "Las credenciales no coinciden",
   "auth/user-not-found": "El usuario no existe",
