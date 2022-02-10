@@ -3,17 +3,20 @@
 import * as plantillas from "./print.js";
 import { app } from "./firebase.js";
 import {
-  getFirestore,
-  collection,
-  getDocs,
-  getDoc,
-  addDoc,
+    getFirestore,
+    collection,
+    getDocs,
+    getDoc,
+    addDoc,
+    updateDoc,
+    arrayUnion,
+    arrayRemove,
+    doc,
+    query,
+    where,
+    orderBy,
+    limit,
   deleteDoc,
-  doc,
-  query,
-  where,
-  orderBy,
-  limit,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 import {
   getAuth,
@@ -104,19 +107,50 @@ export const obtenerGames = async () => {
 };
 
 export const obtenerGame = async (juego) => {
-  let game = await doc(games, juego);
-  let obtainGames = await getDoc(game);
-  if (obtainGames.exists()) {
-    document.getElementById("game").innerHTML = "";
-    document.getElementById("game").innerHTML +=
-      plantillas.printGame(obtainGames);
-  } else {
-    window.location.assign("/404");
-  }
+    let game = await doc(games,juego);
+    let obtainGames = await getDoc(game);
+    let auth;
+    let wishList;
+    let estar=false;
+
+    try {
+        auth = user.getUID();
+        const consulta = await query(
+            wishlist,
+            where("uidUser","==",auth),
+
+        );
+
+        wishList = await getDocs(consulta);
+
+    }catch (error){
+        auth = null;
+        wishList = null;
+        estar = false;
+    }
+
+        if (obtainGames.exists()) {
+            if(wishList !== null) {
+                wishList.docs[0].data().juegos.map((documento) => {
+
+                    if (documento.nombre === obtainGames.data().nombre) {
+                        estar = true;
+                    }
+
+                });
+            }
+
+            document.getElementById("game").innerHTML = "";
+            document.getElementById("game").innerHTML += plantillas.printGame(obtainGames, auth, estar);
+        } else {
+            window.location.assign("/404");
+        }
+
 };
 
 export const queryGames = async (querys) => {
-  let select = querys.split(":");
+
+    let select = querys.split(":");
 
   const consulta = await query(games, orderBy(select[0], select[1]));
   let obtainGames = await getDocs(consulta);
@@ -208,6 +242,7 @@ export const queryGamesSearch = async (querys) => {
   }
 };
 
+
 export const crearWishlist = () => {
   onAuthStateChanged(auth, async (usuario) => {
     if (usuario !== null) {
@@ -232,4 +267,42 @@ export const eliminarWishlist = async () => {
   await deleteDoc(doc(wishlist, obtainWishlist.docs[0].id));
 };
 
-export const addGameToWishlist = (idGame) => {};
+
+
+export const addGameToWishlist = async (idGame) => {
+
+    const consulta = await query(
+        wishlist,
+        where("uidUser","==",user.getUID()),
+
+    );
+
+    let wishList = await getDocs(consulta);
+    let pruebaRef = await doc(wishlist,wishList.docs[0].id);
+    let pruebaRef2 = await doc(games,idGame);
+    const juegos = await getDoc(pruebaRef2);
+
+    await updateDoc(pruebaRef, {
+        juegos: arrayUnion(juegos.data()),
+    });
+
+}
+
+export const removeGameToWishlist = async (idGame) => {
+
+    const consulta = await query(
+        wishlist,
+        where("uidUser","==",user.getUID()),
+
+    );
+
+    let wishList = await getDocs(consulta);
+    let pruebaRef = await doc(wishlist,wishList.docs[0].id);
+    let pruebaRef2 = await doc(games,idGame);
+    const juegos = await getDoc(pruebaRef2);
+
+    await updateDoc(pruebaRef, {
+        juegos: arrayRemove(juegos.data()),
+    });
+
+}
