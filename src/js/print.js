@@ -5,7 +5,7 @@ export const printGames = (games) => {
     games.data().precio - (games.data().descuento * games.data().precio) / 100;
   let titulo = games.data().nombre.split(" ").join("-");
   return `
-                        <div class="item force-badge" >
+                        <div class="item force-badge" id="ig-preorders-item-1">
                             <a class="cover" href="/game/${
                               games.id
                             }-${titulo}" title="${games.data().nombre} ${
@@ -38,7 +38,7 @@ export const printDLC = (games) => {
     games.data().precio - (games.data().descuento * games.data().precio) / 100;
   let titulo = games.data().nombre.split(" ").join("-");
   return `
-                        <div class="item force-badge">
+                        <div class="item force-badge" id="ig-preorders-item-1">
                             <a class="cover" href="/game/${
                               games.id
                             }-${titulo}" title="${games.data().nombre} ${

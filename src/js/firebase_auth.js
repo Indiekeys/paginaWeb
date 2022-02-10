@@ -86,7 +86,6 @@ export const ERRORES_LOGIN = {
 export const authGoogle = async () => {
   try {
     await signInWithPopup(auth, providerG);
-    await crearWishlist();
     hideLoginError();
     persistAccount();
     correctAuth();
@@ -99,7 +98,6 @@ export const authGoogle = async () => {
 export const authFacebook = async () => {
   try {
     await signInWithPopup(auth, providerF);
-    await crearWishlist();
     hideLoginError();
     persistAccount();
     correctAuth();
