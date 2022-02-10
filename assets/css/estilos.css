@@ -2202,3 +2202,18 @@ body.darkmode #hipay_tpp_payment_form .hipay_tpp_control input[type=text], body.
     background: rgba(128,255,1,.278431) url(/assets/img/check.svg) no-repeat 50%;
     background-size: 19px;
 }
+
+
+.wishlist .item .remove {
+    position: absolute;
+    z-index: 10;
+    top: -10px;
+    right: -10px;
+    background: url(/assets/img/close.webp) no-repeat 100% 0;
+    height: 28px;
+    width: 28px
+}
+
+.wishlist .item .remove:hover {
+    opacity: 1
+}

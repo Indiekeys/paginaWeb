@@ -53,6 +53,7 @@ export class Usuario {
     });
   }
 
+
   getPhotoURL() {
     return this.auth.currentUser.photoURL;
   }

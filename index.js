@@ -28,6 +28,12 @@ app.get("/recovery-password", (req, res) => {
   res.sendFile(__dirname + "/paginas/recovery-password.html");
 });
 
+//Se crea la ruta /lista-deseados la cual envía la página wishList.html.
+app.get("/lista-deseados", (req, res) => {
+  res.sendFile(__dirname + "/paginas/wishList.html");
+});
+
+
 /**
  * Se crea una ruta llamada /game/:id la cual envía la página game.html, el id es un parámetro que se recibe en la url.
  */

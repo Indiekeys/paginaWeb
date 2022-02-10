@@ -23,6 +23,7 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 import { Usuario } from "./Usuario.js";
+import {printNoGame, printNoGameWish} from "./print.js";
 
 //Se declaran las constantes a utilizar.
 const auth = getAuth(app);
@@ -117,7 +118,7 @@ export const obtenerGame = async (juego) => {
   try {
     auth = user.getUID();
     const consulta = await query(wishlist, where("uidUser", "==", auth));
-
+    console.log(auth);
     wishList = await getDocs(consulta);
   } catch (error) {
     auth = null;
@@ -284,7 +285,7 @@ export const addGameToWishlist = async (idGame) => {
 //Función que recibe el id de un videojuego y lo elimina de la wishlist.
 export const removeGameToWishlist = async (idGame) => {
   const consulta = await query(wishlist, where("uidUser", "==", user.getUID()));
-
+  console.log(consulta);
   let wishList = await getDocs(consulta);
   let pruebaRef = await doc(wishlist, wishList.docs[0].id);
   let pruebaRef2 = await doc(games, idGame);
@@ -294,3 +295,37 @@ export const removeGameToWishlist = async (idGame) => {
     juegos: arrayRemove(juegos.data()),
   });
 };
+
+//Función que recibe el id de un videojuego y lo elimina de la wishlist.
+export const obtenerWishList = async () => {
+
+  const consulta = await query(wishlist, where("uidUser", "==", user.getUID()));
+  let wishList = await getDocs(consulta);
+
+  document.getElementById("ig-panel-center").innerHTML = "";
+  document.getElementById("ig-panel-center").innerHTML = "<div class='wishlist basic-panel products-trending' id='wish'><h2>LISTA DE DESEADOS</h2></div>";
+  console.log();
+  if(wishList.docs[0].data().juegos.length === 0){
+
+    document.getElementById("wish").innerHTML += printNoGameWish();
+
+  }else{
+
+    wishList.docs[0].data().juegos.map(async (documento) => {
+
+      let consultaId = await query(games, where("nombre", "==", documento.nombre));
+      let id = await getDocs(consultaId);
+
+      if(documento.descripcion.Tipo=="DLC") {
+        document.getElementById("wish").innerHTML += plantillas.printDLCWish(documento,id.docs[0].id);
+      }else{
+        document.getElementById("wish").innerHTML += plantillas.printGamesWish(documento,id.docs[0].id);
+      }
+
+    });
+
+  }
+
+
+};
+

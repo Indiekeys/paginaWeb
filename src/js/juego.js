@@ -3,7 +3,7 @@
 import * as script from "./firebase_auth.js";
 import * as db from "./firestore.js";
 
-window.onload = async () => {
+window.onload = () => {
   //Se comprueba si esta iniciada la sesión o no.
   script.comprobarAuth();
   //Se obtiene el id del juego de la URL

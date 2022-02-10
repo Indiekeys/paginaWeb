@@ -18,7 +18,7 @@ import {
 import * as validar from "./validacion.js";
 import {Usuario} from "./Usuario.js";
 import * as print from "./print.js";
-import {crearWishlist} from "./firestore.js";
+import {crearWishlist,obtenerWishList} from "./firestore.js";
 //Se crean las siguientes constantes, en las cuales se encuentra, el auth, proveedor del auth, contenedor mensaje de error y el usuario.
 const auth = getAuth(app);
 const providerG = new GoogleAuthProvider(app);
@@ -149,6 +149,19 @@ export const isNotLoggedIn = () => {
       setTimeout(() => {
         window.location.assign("/");
       },1000);
+    }
+  });
+}
+
+//Función que comprueba los
+export const wishList = () => {
+  onAuthStateChanged(auth, async (user) => {
+    if (user === null) {
+      setTimeout(() => {
+        window.location.assign("/");
+      },1000);
+    }else{
+      obtenerWishList();
     }
   });
 }
