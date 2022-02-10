@@ -9,7 +9,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
 
 /**
- * Se crea la clase usuario, la cual recibe por parametro un auth, esta clase sirve para obtener datos de la cuenta del usuario
+ * Se crea la clase usuario, la cual recibe por parámetro un auth, esta clase sirve para obtener datos de la cuenta del usuario
  * y también para actualizar los datos de la cuenta del usuario.
  */
 export class Usuario {

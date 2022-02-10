@@ -1,8 +1,9 @@
 "use strict";
+//Se importa la dependencia.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
 
 
-
+//Se crea la configuración de firebase.
 const firebaseConfig = {
 
     apiKey: "AIzaSyBBcVTcLP_jDrRYKOj4ayXncHdzMzxzDQo",
@@ -23,7 +24,6 @@ const firebaseConfig = {
 
 
 // Initialize Firebase
-
 const app = initializeApp(firebaseConfig);
 export {app};
 

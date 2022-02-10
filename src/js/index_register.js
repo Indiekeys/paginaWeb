@@ -2,7 +2,7 @@
 //Se importan dependencias.
 import * as script from "./firebase_auth.js";
 import * as validar from "./validacion.js";
-import { crearWishlist } from "./firestore.js";
+import {crearWishlist} from "./firestore.js";
 window.onload = () => {
   //Se comprueba si la sesión esta iniciada o no.
   script.hideLoginError();

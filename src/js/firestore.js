@@ -3,19 +3,19 @@
 import * as plantillas from "./print.js";
 import { app } from "./firebase.js";
 import {
-    getFirestore,
-    collection,
-    getDocs,
-    getDoc,
-    addDoc,
-    updateDoc,
-    arrayUnion,
-    arrayRemove,
-    doc,
-    query,
-    where,
-    orderBy,
-    limit,
+  getFirestore,
+  collection,
+  getDocs,
+  getDoc,
+  addDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  doc,
+  query,
+  where,
+  orderBy,
+  limit,
   deleteDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 import {
@@ -68,6 +68,7 @@ export const obtenerDlc = async () => {
   });
 };
 
+//Función que imprime cinco juegos ordenados por más descuento.
 export const obtenerMasDescuento = async () => {
   const consulta = await query(
     games,
@@ -87,7 +88,7 @@ export const obtenerMasDescuento = async () => {
     }
   });
 };
-
+//Función que obtiene todos los juegos y los imprime.
 export const obtenerGames = async () => {
   let obtainGames = await getDocs(games);
   document.getElementById("ig-panel-center").innerHTML = "";
@@ -105,52 +106,47 @@ export const obtenerGames = async () => {
     }
   });
 };
-
+//Función que obtiene un juego.
 export const obtenerGame = async (juego) => {
-    let game = await doc(games,juego);
-    let obtainGames = await getDoc(game);
-    let auth;
-    let wishList;
-    let estar=false;
+  let game = await doc(games, juego);
+  let obtainGames = await getDoc(game);
+  let auth;
+  let wishList;
+  let estar = false;
 
-    try {
-        auth = user.getUID();
-        const consulta = await query(
-            wishlist,
-            where("uidUser","==",auth),
+  try {
+    auth = user.getUID();
+    const consulta = await query(wishlist, where("uidUser", "==", auth));
 
-        );
+    wishList = await getDocs(consulta);
+  } catch (error) {
+    auth = null;
+    wishList = null;
+    estar = false;
+  }
 
-        wishList = await getDocs(consulta);
-
-    }catch (error){
-        auth = null;
-        wishList = null;
-        estar = false;
+  if (obtainGames.exists()) {
+    if (wishList !== null) {
+      wishList.docs[0].data().juegos.map((documento) => {
+        if (documento.nombre === obtainGames.data().nombre) {
+          estar = true;
+        }
+      });
     }
 
-        if (obtainGames.exists()) {
-            if(wishList !== null) {
-                wishList.docs[0].data().juegos.map((documento) => {
-
-                    if (documento.nombre === obtainGames.data().nombre) {
-                        estar = true;
-                    }
-
-                });
-            }
-
-            document.getElementById("game").innerHTML = "";
-            document.getElementById("game").innerHTML += plantillas.printGame(obtainGames, auth, estar);
-        } else {
-            window.location.assign("/404");
-        }
-
+    document.getElementById("game").innerHTML = "";
+    document.getElementById("game").innerHTML += plantillas.printGame(
+      obtainGames,
+      auth,
+      estar
+    );
+  } else {
+    window.location.assign("/404");
+  }
 };
-
+//Función que sirve para realizar una query a la base de datos y obtener juegos.
 export const queryGames = async (querys) => {
-
-    let select = querys.split(":");
+  let select = querys.split(":");
 
   const consulta = await query(games, orderBy(select[0], select[1]));
   let obtainGames = await getDocs(consulta);
@@ -171,6 +167,7 @@ export const queryGames = async (querys) => {
   });
 };
 
+//Función para realizar una consulta a la base de datos y obtener juegos por plataforma.
 export const queryGamesPlatform = async (querys) => {
   const consulta = await query(games, where("plataforma", "==", querys));
   let obtainGames = await getDocs(consulta);
@@ -194,6 +191,7 @@ export const queryGamesPlatform = async (querys) => {
   }
 };
 
+//Función que realiza una query a la base de datos dependiendo de la opción.
 export const queryGamesOption = async (querys) => {
   const consulta = await query(games, where("descripcion.Tipo", "==", querys));
   let obtainGames = await getDocs(consulta);
@@ -217,7 +215,7 @@ export const queryGamesOption = async (querys) => {
     });
   }
 };
-
+//Función que filtra los juegos por nombre.
 export const queryGamesSearch = async (querys) => {
   const consulta = await query(games, where("nombre", ">=", querys));
   let obtainGames = await getDocs(consulta);
@@ -241,9 +239,11 @@ export const queryGamesSearch = async (querys) => {
     });
   }
 };
-
-
-export const crearWishlist = () => {
+/**
+ * Función que crea una wishlist, la cual almacena los juegos y una referencia del usuario al que le pertenece.
+ * Si el usuario ya tiene una wishlist, no se creara.
+ */
+export const crearWishlist = async () => {
   onAuthStateChanged(auth, async (usuario) => {
     if (usuario !== null) {
       const consulta = await query(
@@ -260,49 +260,37 @@ export const crearWishlist = () => {
     }
   });
 };
-
+//Función que elimina la wishlist del usuario.
 export const eliminarWishlist = async () => {
   const consulta = await query(wishlist, where("uidUser", "==", user.getUID()));
   let obtainWishlist = await getDocs(consulta);
   await deleteDoc(doc(wishlist, obtainWishlist.docs[0].id));
 };
 
-
-
+//Función que recibe el id de un videojuego y lo añade a la wishlist.
 export const addGameToWishlist = async (idGame) => {
+  const consulta = await query(wishlist, where("uidUser", "==", user.getUID()));
 
-    const consulta = await query(
-        wishlist,
-        where("uidUser","==",user.getUID()),
+  let wishList = await getDocs(consulta);
+  let pruebaRef = await doc(wishlist, wishList.docs[0].id);
+  let pruebaRef2 = await doc(games, idGame);
+  const juegos = await getDoc(pruebaRef2);
 
-    );
+  await updateDoc(pruebaRef, {
+    juegos: arrayUnion(juegos.data()),
+  });
+};
 
-    let wishList = await getDocs(consulta);
-    let pruebaRef = await doc(wishlist,wishList.docs[0].id);
-    let pruebaRef2 = await doc(games,idGame);
-    const juegos = await getDoc(pruebaRef2);
-
-    await updateDoc(pruebaRef, {
-        juegos: arrayUnion(juegos.data()),
-    });
-
-}
-
+//Función que recibe el id de un videojuego y lo elimina de la wishlist.
 export const removeGameToWishlist = async (idGame) => {
+  const consulta = await query(wishlist, where("uidUser", "==", user.getUID()));
 
-    const consulta = await query(
-        wishlist,
-        where("uidUser","==",user.getUID()),
+  let wishList = await getDocs(consulta);
+  let pruebaRef = await doc(wishlist, wishList.docs[0].id);
+  let pruebaRef2 = await doc(games, idGame);
+  const juegos = await getDoc(pruebaRef2);
 
-    );
-
-    let wishList = await getDocs(consulta);
-    let pruebaRef = await doc(wishlist,wishList.docs[0].id);
-    let pruebaRef2 = await doc(games,idGame);
-    const juegos = await getDoc(pruebaRef2);
-
-    await updateDoc(pruebaRef, {
-        juegos: arrayRemove(juegos.data()),
-    });
-
-}
+  await updateDoc(pruebaRef, {
+    juegos: arrayRemove(juegos.data()),
+  });
+};
