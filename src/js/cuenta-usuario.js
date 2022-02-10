@@ -36,8 +36,8 @@ window.onload = () => {
                     confirmButtonText: 'Eliminar',
                 });
                 user.reauthenticateUser(password).then(async () => {
-                    await user.deleteAccount();
                     await eliminarWishlist();
+                    await user.deleteAccount();
                 }).catch(() => {
                     Swal.fire({
                         icon: 'error',
@@ -62,8 +62,8 @@ window.onload = () => {
                 });
 
                 if(email === user.getEmail()){
-                    await user.deleteAccount();
                     await eliminarWishlist();
+                    await user.deleteAccount();
                 }else{
                     Swal.fire({
                         icon: 'error',

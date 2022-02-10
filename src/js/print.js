@@ -5,7 +5,7 @@ export const printGames = (games) => {
     games.data().precio - (games.data().descuento * games.data().precio) / 100;
   let titulo = games.data().nombre.split(" ").join("-");
   return `
-                        <div class="item force-badge" id="ig-preorders-item-1">
+                        <div class="item force-badge" >
                             <a class="cover" href="/game/${
                               games.id
                             }-${titulo}" title="${games.data().nombre} ${
@@ -29,6 +29,7 @@ export const printGames = (games) => {
                                 </div>
                             </a>
                             <div class="name">${games.data().nombre}</div>
+                            
                         `;
 };
 //Función que recibe los DLC y retorna una plantilla HTML con los DLC.
@@ -37,7 +38,7 @@ export const printDLC = (games) => {
     games.data().precio - (games.data().descuento * games.data().precio) / 100;
   let titulo = games.data().nombre.split(" ").join("-");
   return `
-                        <div class="item force-badge" id="ig-preorders-item-1">
+                        <div class="item force-badge">
                             <a class="cover" href="/game/${
                               games.id
                             }-${titulo}" title="${games.data().nombre} ${
@@ -288,4 +289,78 @@ export const printNoGame = () => {
 //Función que imprime el avatar el usuario.
 export const printAvatar = (auth) => {
   return `<div class="avatar"><img src="${auth.photoURL}" class="ig-avatar"></div>`;
+};
+
+//Función que recibe un juego y lo imprime en la lista de deseados.
+export const printGamesWish = (games,id) => {
+    let precioTotal =
+        games.precio - (games.descuento * games.precio) / 100;
+    let titulo = games.nombre.split(" ").join("-");
+    return `
+                        <div class="item force-badge">
+                            <a class="cover" href="/game/${
+        id
+    }-${titulo}" title="${games.nombre} ${
+        games.plataforma
+    } ${games.precio}€">
+                                <div class="badge ${
+        games.plataforma
+    }"></div>
+                                <img class="picture mainshadow" src="${
+        games.portada
+    }" alt="${games.nombre}" title="${
+        games.nombre
+    }" loading="lazy">
+                                <div class="shadow">
+                                    <div class="discount">${
+        games.descuento
+    }%</div>
+                                    <div class="price">${precioTotal.toFixed(
+        2
+    )}€</div>
+                                </div>
+                            </a>
+                            <div class="name">${games.nombre}</div>
+                            <a class="remove" id="remove" name="${id}" alt="X"></a></div>
+                        `;
+};
+
+//Función que recibe un juego de tipo DLC y un id el cual se usara para obtener la referencia de ese DLC
+export const printDLCWish = (games,id) => {
+    let precioTotal =
+        games.precio - (games.descuento * games.precio) / 100;
+    let titulo = games.nombre.split(" ").join("-");
+    return `
+                        <div class="item force-badge">
+                            <a class="cover" href="/game/${
+        id
+    }-${titulo}" title="${games.nombre} ${
+        games.plataforma
+    } ${games.precio}€">
+                                <div class="badge ${
+        games.plataforma
+    }"></div>
+                                <img class="picture mainshadow" src="${
+        games.portada
+    }" alt="${games.nombre}" title="${
+        games.nombre
+    }" loading="lazy">
+                                <img src="/assets/img/dlc.png" class="dlc" alt="DLC">
+                                <div class="shadow">
+                                    <div class="discount">${
+        games.descuento
+    }%</div>
+                                    <div class="price">${precioTotal.toFixed(
+        2
+    )}€</div>
+                                </div>
+                            </a>
+                            <div class="name">${games.nombre}</div>
+                            <a class="remove" id="remove" name="${id}" alt="X"></a></div>
+                        `;
+};
+
+//Función que informa al usuario de que no tiene ningún artículo en su lista de deseados.
+export const printNoGameWish = () => {
+    return `<div><br><h2 id="ningunJuego">No tienes añadido ningún juego a la lista de deseados =(</h2><a href="/" class="boton" id="botonJuegos" >Click aquí para ver todo el catálogo</a></div>`;
 };

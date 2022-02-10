@@ -18,7 +18,7 @@ import {
 import * as validar from "./validacion.js";
 import {Usuario} from "./Usuario.js";
 import * as print from "./print.js";
-import {crearWishlist} from "./firestore.js";
+import {crearWishlist,obtenerWishList} from "./firestore.js";
 //Se crean las siguientes constantes, en las cuales se encuentra, el auth, proveedor del auth, contenedor mensaje de error y el usuario.
 const auth = getAuth(app);
 const providerG = new GoogleAuthProvider(app);
@@ -86,6 +86,7 @@ export const ERRORES_LOGIN = {
 export const authGoogle = async () => {
   try {
     await signInWithPopup(auth, providerG);
+    await crearWishlist();
     hideLoginError();
     persistAccount();
     correctAuth();
@@ -98,6 +99,7 @@ export const authGoogle = async () => {
 export const authFacebook = async () => {
   try {
     await signInWithPopup(auth, providerF);
+    await crearWishlist();
     hideLoginError();
     persistAccount();
     correctAuth();
@@ -149,6 +151,19 @@ export const isNotLoggedIn = () => {
       setTimeout(() => {
         window.location.assign("/");
       },1000);
+    }
+  });
+}
+
+//Función que comprueba si el usuario no es null, si no lo es, obtiene la wishlist del usuario.
+export const wishList = () => {
+  onAuthStateChanged(auth, async (user) => {
+    if (user === null) {
+      setTimeout(() => {
+        window.location.assign("/");
+      },1000);
+    }else{
+      await obtenerWishList();
     }
   });
 }

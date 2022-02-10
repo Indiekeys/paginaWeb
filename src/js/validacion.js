@@ -9,6 +9,7 @@ export function printLogIn() {
   document.getElementById("cuenta").classList.add("d-none");
   document.getElementById("login").classList.remove("d-none");
   document.getElementById("register").classList.remove("d-none");
+  document.getElementById("listaDeseados").classList.add("d-none");
 }
 
 //Se crea una función printLogOut la cual imprime el LogOut del usuario en el nav.
@@ -17,4 +18,5 @@ export function printLogOut() {
   document.getElementById("cuenta").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
   document.getElementById("register").classList.add("d-none");
+  document.getElementById("listaDeseados").classList.remove("d-none");
 }

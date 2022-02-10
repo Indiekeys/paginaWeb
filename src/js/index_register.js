@@ -38,7 +38,6 @@ window.onload = () => {
     async () => {
       await script.authGoogle().then(async () => {
         await script.setDefaultImageProfile();
-        await crearWishlist();
       });
     },
     false
@@ -49,7 +48,6 @@ window.onload = () => {
     async () => {
       await script.authFacebook().then(async () => {
         await script.setDefaultImageProfile();
-        await crearWishlist();
       });
     },
     false
