@@ -1225,7 +1225,7 @@ li,a,div{
 
 
 .product .buy .button.addwishlist:hover {
-    background-size: 22px
+    background-size: 46px
 }
 
 
@@ -1309,9 +1309,6 @@ padding: 20px;
 }
 
 
-.product .buy .button.addwishlist:hover {
-    background-size: 22px
-}
 .buybutton{
     background-color: #004abb;
     color: white;
@@ -2191,4 +2188,20 @@ body.darkmode #hipay_tpp_payment_form .hipay_tpp_control input[type=text], body.
 
 .account h2{
     padding: 20px;
+}
+
+.product .buy .button.addwishlist {
+    background-color: rgba(21, 124, 236, 0.31);
+    background-image: url(/assets/img/heart.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 40px;
+    width: 80px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.product .buy .button.addwishlist.wishlist-added {
+    background: rgba(128,255,1,.278431) url(/assets/img/check.svg) no-repeat 50%;
+    background-size: 19px;
 }

@@ -1,115 +1,59 @@
-"use strict";
-
-//Función que recibe los juegos y retorna una plantilla HTML con los juegos.
 export const printGames = (games) => {
-  let precioTotal =
-    games.data().precio - (games.data().descuento * games.data().precio) / 100;
-  let titulo = games.data().nombre.split(" ").join("-");
-  return `
+let precioTotal = games.data().precio-((games.data().descuento*games.data().precio)/100);
+let titulo = games.data().nombre.split(" ").join("-");
+return `
                         <div class="item force-badge" id="ig-preorders-item-1">
-                            <a class="cover" href="/game/${
-                              games.id
-                            }-${titulo}" title="${games.data().nombre} ${
-    games.data().plataforma
-  } ${games.data().precio}€">
-                                <div class="badge ${
-                                  games.data().plataforma
-                                }"></div>
-                                <img class="picture mainshadow" src="${
-                                  games.data().portada
-                                }" alt="${games.data().nombre}" title="${
-    games.data().nombre
-  }" loading="lazy">
+                            <a class="cover" href="/game/${games.id}-${titulo}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
+                                <div class="badge ${games.data().plataforma}"></div>
+                                <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}" loading="lazy">
                                 <div class="shadow">
-                                    <div class="discount">${
-                                      games.data().descuento
-                                    }%</div>
-                                    <div class="price">${precioTotal.toFixed(
-                                      2
-                                    )}€</div>
+                                    <div class="discount">${games.data().descuento}%</div>
+                                    <div class="price">${precioTotal.toFixed(2)}€</div>
                                 </div>
                             </a>
                             <div class="name">${games.data().nombre}</div>
-                        `;
+                        `
 };
-//Función que recibe los DLC y retorna una plantilla HTML con los DLC.
+
 export const printDLC = (games) => {
-  let precioTotal =
-    games.data().precio - (games.data().descuento * games.data().precio) / 100;
-  let titulo = games.data().nombre.split(" ").join("-");
-  return `
+    let precioTotal = games.data().precio-((games.data().descuento*games.data().precio)/100);
+    let titulo = games.data().nombre.split(" ").join("-");
+    return `
                         <div class="item force-badge" id="ig-preorders-item-1">
-                            <a class="cover" href="/game/${
-                              games.id
-                            }-${titulo}" title="${games.data().nombre} ${
-    games.data().plataforma
-  } ${games.data().precio}€">
-                                <div class="badge ${
-                                  games.data().plataforma
-                                }"></div>
-                                <img class="picture mainshadow" src="${
-                                  games.data().portada
-                                }" alt="${games.data().nombre}" title="${
-    games.data().nombre
-  }" loading="lazy">
+                            <a class="cover" href="/game/${games.id}-${titulo}" title="${games.data().nombre} ${games.data().plataforma} ${games.data().precio}€">
+                                <div class="badge ${games.data().plataforma}"></div>
+                                <img class="picture mainshadow" src="${games.data().portada}" alt="${games.data().nombre}" title="${games.data().nombre}" loading="lazy">
                                 <img src="/assets/img/dlc.png" class="dlc" alt="DLC">
                                 <div class="shadow">
-                                    <div class="discount">${
-                                      games.data().descuento
-                                    }%</div>
-                                    <div class="price">${precioTotal.toFixed(
-                                      2
-                                    )}€</div>
+                                    <div class="discount">${games.data().descuento}%</div>
+                                    <div class="price">${precioTotal.toFixed(2)}€</div>
                                 </div>
                             </a>
                             <div class="name">${games.data().nombre}</div>
-                        `;
+                        `
 };
-//Función que recibe un juego y retorna una plantilla HTML con el juego.
-export const printGame = (game) => {
-  let precioTotal =
-    game.data().precio - (game.data().descuento * game.data().precio) / 100;
-  let fecha = new Date(game.data().descripcion.fechaLanzamiento.seconds * 1000);
-  const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
-  let titulo = game.data().nombre;
-  document.title = "Comprar " + titulo;
-  const formatDate = (date) => {
-    return (
-      date.getDate() +
-      " de " +
-      months[date.getMonth()] +
-      " del " +
-      date.getFullYear()
-    );
-  };
-  document.getElementById(
-    "backgroundLink"
-  ).style = `background: linear-gradient(to bottom, #1d201f 0px, transparent 150px), url(${
-    game.data().fondo
-  }) center 0 no-repeat  #1d201f;`;
-  let fechaFinal = formatDate(fecha);
-  let dlc = "";
-  let dlcNoStock = "";
-  if (game.data().descripcion.Tipo === "DLC") {
-    dlc = `<img src="/assets/img/dlc.png" class="dlc" alt="DLC">`;
-    dlcNoStock = `<img src="/assets/img/dlc.png" class="dlc noStock" alt="DLC">`;
-  }
 
-  if (game.data().keys.length === 0) {
-    return `
+export const printGame = (game) => {
+    let precioTotal = game.data().precio-((game.data().descuento*game.data().precio)/100);
+    let fecha = new Date(game.data().descripcion.fechaLanzamiento.seconds*1000);
+    const months = ["Enero", "Febrero", "Marzo","Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    let titulo = game.data().nombre;
+    document.title = "Comprar " + titulo;
+    const formatDate = (date)=>{
+        let formatted_date = date.getDate() + " de " + months[date.getMonth()] + " del " + date.getFullYear()
+        return formatted_date;
+    }
+    document.getElementById("backgroundLink").style=`background: linear-gradient(to bottom, #1d201f 0px, transparent 150px), url(${game.data().fondo}) center 0 no-repeat  #1d201f;`;
+    let fechaFinal = formatDate(fecha);
+    let dlc="";
+    let dlcNoStock="";
+    if(game.data().descripcion.Tipo=="DLC"){
+        dlc=`<img src="/assets/img/dlc.png" class="dlc" alt="DLC">`
+        dlcNoStock= `<img src="/assets/img/dlc.png" class="dlc noStock" alt="DLC">`;
+    }
+
+    if(game.data().keys.length==0) {
+        return `
 
           <div id="ig-main-container">
         
@@ -123,9 +67,7 @@ export const printGame = (game) => {
                       <div class="blur">
                         <div class="cover mainshadow">
                           <!--imagen-->
-                          <img class="picture noStock" src="${
-                            game.data().portada
-                          }" alt="Portada juego">
+                          <img class="picture noStock" src="${game.data().portada}">
                            ${dlcNoStock}
                         </div>
                       </div>
@@ -137,10 +79,10 @@ export const printGame = (game) => {
                             ${game.data().plataforma}
                           </a>
                           <div class="download">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fnostock.svg?alt=media&token=c8e937d3-46fa-4dce-b8ae-aa9e8af501a6" alt="icono sin stock">No queda Stock
+                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fnostock.svg?alt=media&token=c8e937d3-46fa-4dce-b8ae-aa9e8af501a6">No queda Stock
                           </div>
                           <div class="download">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fstock.webp?alt=media&token=a5020a31-0a83-4aa9-8f59-da43ee2fe8aa" alt="icono descarga inmediata">Descarga inmediata
+                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fstock.webp?alt=media&token=a5020a31-0a83-4aa9-8f59-da43ee2fe8aa">Descarga inmediata
                           </div>
                         </div>
         
@@ -150,9 +92,7 @@ export const printGame = (game) => {
                               Precio de venta al público:
                               <span>${game.data().precio}€</span>
                             </div>
-                            <div class="discount">${
-                              game.data().descuento
-                            }%</div>
+                            <div class="discount">${game.data().descuento}%</div>
                             <div class="price">${precioTotal.toFixed(2)}€</div>
                           </div>
                           <div class="swap">
@@ -172,9 +112,7 @@ export const printGame = (game) => {
                         <h2>Acerca del Juego</h2>
                         <p>${game.data().descripcion.Descripcion}</p>
                         <p><b>Fecha de lanzamiento: </b>${fechaFinal}</p>
-                        <p><b>Desarrollador: </b>${
-                          game.data().descripcion.Desarrollador
-                        }</p>
+                        <p><b>Desarrollador: </b>${game.data().descripcion.Desarrollador}</p>
                         <p><b>Tipo: </b> ${game.data().descripcion.Tipo}</p>
                       </div>
                       <!--Posible Requisitos de ampliación -->
@@ -183,9 +121,9 @@ export const printGame = (game) => {
                 </div>
               </div>
             </div>
-          </div>`;
-  } else {
-    return `
+          </div>`
+    }else{
+        return `
 
           <div id="ig-main-container">
         
@@ -199,9 +137,7 @@ export const printGame = (game) => {
                       <div class="blur">
                         <div class="cover mainshadow">
                           <!--imagen-->
-                          <img class="picture" src="${
-                            game.data().portada
-                          }" alt="imagen portada">
+                          <img class="picture" src="${game.data().portada}">
                           ${dlc}
                         </div>
                       </div>
@@ -213,10 +149,10 @@ export const printGame = (game) => {
                             ${game.data().plataforma}
                           </a>
                           <div class="download">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fstock.webp?alt=media&token=a5020a31-0a83-4aa9-8f59-da43ee2fe8aa" alt="icono stock">En stock
+                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fstock.webp?alt=media&token=a5020a31-0a83-4aa9-8f59-da43ee2fe8aa">En stock
                           </div>
                           <div class="download">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fstock.webp?alt=media&token=a5020a31-0a83-4aa9-8f59-da43ee2fe8aa" alt="descarga inmediata">Descarga inmediata
+                            <img src="https://firebasestorage.googleapis.com/v0/b/indiekeys-d0568.appspot.com/o/images%2FStock%2Fstock.webp?alt=media&token=a5020a31-0a83-4aa9-8f59-da43ee2fe8aa">Descarga inmediata
                           </div>
                         </div>
         
@@ -226,9 +162,7 @@ export const printGame = (game) => {
                               Precio de venta al público:
                               <span>${game.data().precio}€</span>
                             </div>
-                            <div class="discount">${
-                              game.data().descuento
-                            }%</div>
+                            <div class="discount">${game.data().descuento}%</div>
                             <div class="price">${precioTotal.toFixed(2)}€</div>
                           </div>
                           <div class="swap">
@@ -248,9 +182,7 @@ export const printGame = (game) => {
                         <h2>Acerca del Juego</h2>
                         <p>${game.data().descripcion.Descripcion}</p>
                         <p><b>Fecha de lanzamiento: </b>${fechaFinal}</p>
-                        <p><b>Desarrollador: </b>${
-                          game.data().descripcion.Desarrollador
-                        }</p>
+                        <p><b>Desarrollador: </b>${game.data().descripcion.Desarrollador}</p>
                         <p><b>Tipo: </b> ${game.data().descripcion.Tipo}</p>
                       </div>
                       <!--Posible Requisitos de ampliación -->
@@ -259,14 +191,19 @@ export const printGame = (game) => {
                 </div>
               </div>
             </div>
-          </div>`;
-  }
+          </div>`
+    }
 };
 
 export const printNoGame = () => {
-  return `<div><br><h2 id="ningunJuego">No se ha podido encontrar ningún Juego =(</h2><a href="#" class="boton" id="botonJuegos" >Click aquí para ver todo el catálogo</a></div>`;
+
+    return `<div><br><h2 id="ningunJuego">No se ha podido encontrar ningún Juego =(</h2><a href="#" class="boton" id="botonJuegos" >Click aquí para ver todo el catálogo</a></div>`
+
 };
 
 export const printAvatar = (auth) => {
-  return `<div class="avatar"><img src="${auth.photoURL}" class="ig-avatar" alt="avatar"></div>`;
+
+    return `<div class="avatar"><img src="${auth.photoURL}" class="ig-avatar"></div>`
+
 };
+
