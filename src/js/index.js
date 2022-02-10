@@ -5,18 +5,16 @@ import * as db from "./firestore.js";
 
 window.onload = ()=>{
 
-
     script.comprobarAuth();
     db.gamesDate();
     db.obtenerMasDescuento();
     db.obtenerDlc();
 
-
     document.getElementById("log_out").addEventListener(
         "click",
         (e) => {
             script.log_out();
-            document.getElementById("imgAvatar").innerHTML="";
+            window.location.href="/";
         },
         false
     )
@@ -30,6 +28,8 @@ window.onload = ()=>{
 
             if(!e.target.value==""){
                 db.queryGamesPlatform(e.target.value);
+            }else{
+                db.obtenerGames();
             }
         },
         false
@@ -43,6 +43,8 @@ window.onload = ()=>{
 
             if(!e.target.value==""){
                 db.queryGames(e.target.value);
+            }else{
+                db.obtenerGames();
             }
 
         },
@@ -55,12 +57,14 @@ window.onload = ()=>{
             document.getElementById("plataforma").selectedIndex=0;
             document.getElementById("order").selectedIndex=0;
 
-            if(!e.target.value==""){
+            if(e.target.value != ""){
                 if(e.target.value=="todo"){
                     db.obtenerGames();
                 }else {
                     db.queryGamesOption(e.target.value);
                 }
+            }else{
+                db.obtenerGames();
             }
 
         },

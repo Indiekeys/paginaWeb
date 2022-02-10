@@ -33,7 +33,7 @@ export const printDLC = (games) => {
                         `
 };
 
-export const printGame = (game) => {
+export const printGame = (game,auth,estar) => {
     let precioTotal = game.data().precio-((game.data().descuento*game.data().precio)/100);
     let fecha = new Date(game.data().descripcion.fechaLanzamiento.seconds*1000);
     const months = ["Enero", "Febrero", "Marzo","Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -50,6 +50,22 @@ export const printGame = (game) => {
     if(game.data().descripcion.Tipo=="DLC"){
         dlc=`<img src="/assets/img/dlc.png" class="dlc" alt="DLC">`
         dlcNoStock= `<img src="/assets/img/dlc.png" class="dlc noStock" alt="DLC">`;
+    }
+    let autentificacion;
+    if(auth===null){
+        autentificacion = "false"
+    }else{
+        autentificacion = "true"
+    }
+
+    let estar_;
+    let cssEstar;
+    if(estar===false){
+        estar_ = "noEsta"
+        cssEstar = "";
+    }else{
+        estar_ = "esta"
+        cssEstar = "wishlist-added";
     }
 
     if(game.data().keys.length==0) {
@@ -96,7 +112,7 @@ export const printGame = (game) => {
                             <div class="price">${precioTotal.toFixed(2)}€</div>
                           </div>
                           <div class="swap">
-                            <a id="ig-product-main-panel-addwishlist" class="button addwishlist hint--top hint--rounded " data-text-add="Añadir a mi wishlist" data-text-remove="Eliminar de mi wishlist" data-hint="Añadir a mi wishlist" href="" data-prodid="7893" data-signed="1"></a>
+                            <a id="ig-product-main-panel-addwishlist" class="button addwishlist hint--top hint--rounded ${autentificacion} ${estar_} ${cssEstar}"  name="${game.id}"></a>
                             <a  href="#" rel="nofollow" class="button buybutton not-active">Comprar</a>
                           </div>
                         </div>
@@ -166,7 +182,7 @@ export const printGame = (game) => {
                             <div class="price">${precioTotal.toFixed(2)}€</div>
                           </div>
                           <div class="swap">
-                            <a id="ig-product-main-panel-addwishlist" class="button addwishlist hint--top hint--rounded " data-text-add="Añadir a mi wishlist" data-text-remove="Eliminar de mi wishlist" data-hint="Añadir a mi wishlist" href="" data-prodid="7893" data-signed="1"></a>
+                            <a id="ig-product-main-panel-addwishlist" class="button addwishlist hint--top hint--rounded ${autentificacion} ${estar_} ${cssEstar}" name="${game.id}" ></a>
                             <a href="https://www.instant-gaming.com/es/pagos-7893-monster-hunter-rise-pc-juego-steam/" rel="nofollow" class="button buybutton">Comprar</a>
                           </div>
                         </div>

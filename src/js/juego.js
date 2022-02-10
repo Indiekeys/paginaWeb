@@ -11,7 +11,8 @@ window.onload = async ()=>{
         "click",
         (e) => {
             script.log_out();
-            document.getElementById("imgAvatar").innerHTML="";
+            window.location.href="/";
+
         },
         false
     )
@@ -29,8 +30,39 @@ window.onload = async ()=>{
                 document.getElementById("submenu").classList.add("block");
             }
 
+
         },
         false
     )
+
+    document.addEventListener(
+        "click",
+        (e) => {
+
+            if(e.target.id=="ig-product-main-panel-addwishlist"){
+
+                if(e.target.classList.contains("true")){
+                    if(e.target.classList.contains("esta")){
+                        db.removeGameToWishlist(e.target.name);
+                        e.target.classList.remove("esta");
+                        e.target.classList.remove("wishlist-added");
+                        e.target.classList.add("noEsta");
+                    }else{
+                        db.addGameToWishlist(e.target.name);
+                        e.target.classList.add("esta");
+                        e.target.classList.remove("noEsta");
+                        e.target.classList.add("wishlist-added");
+                    }
+                }else{
+                    window.location.href="/register";
+                }
+
+            }
+        },
+        false
+    )
+
+
+
 
 }

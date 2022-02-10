@@ -9,6 +9,7 @@ import {
     onSnapshot,
     updateDoc,
     arrayUnion,
+    arrayRemove,
     doc,
     query,
     where,
@@ -102,12 +103,43 @@ export const obtenerGames = async () => {
 export const obtenerGame = async (juego) => {
     let game = await doc(games,juego);
     let obtainGames = await getDoc(game);
-    if(obtainGames.exists()) {
-        document.getElementById("game").innerHTML = "";
-        document.getElementById("game").innerHTML += plantillas.printGame(obtainGames);
-    }else{
-        window.location.assign("/404");
+    let auth;
+    let wishList;
+    let estar=false;
+
+    try {
+        auth = user.getUID();
+        const consulta = await query(
+            wishlist,
+            where("uidUser","==",auth),
+
+        );
+
+        wishList = await getDocs(consulta);
+
+    }catch (error){
+        auth = null;
+        wishList = null;
+        estar = false;
     }
+
+        if (obtainGames.exists()) {
+            if(wishList !== null) {
+                wishList.docs[0].data().juegos.map((documento) => {
+
+                    if (documento.nombre === obtainGames.data().nombre) {
+                        estar = true;
+                    }
+
+                });
+            }
+
+            document.getElementById("game").innerHTML = "";
+            document.getElementById("game").innerHTML += plantillas.printGame(obtainGames, auth, estar);
+        } else {
+            window.location.assign("/404");
+        }
+
 };
 
 export const queryGames = async (querys) => {
@@ -237,7 +269,68 @@ export const crearWishlist = () => {
     });
 }
 
-export const addGameToWishlist = (idGame) =>
-{
-    
+export const addGameToWishlist = async (idGame) => {
+
+    const consulta = await query(
+        wishlist,
+        where("uidUser","==",user.getUID()),
+
+    );
+
+    let wishList = await getDocs(consulta);
+    let pruebaRef = await doc(wishlist,wishList.docs[0].id);
+    let pruebaRef2 = await doc(games,idGame);
+    const juegos = await getDoc(pruebaRef2);
+
+    await updateDoc(pruebaRef, {
+        juegos: arrayUnion(juegos.data()),
+    });
+
 }
+
+export const removeGameToWishlist = async (idGame) => {
+
+    const consulta = await query(
+        wishlist,
+        where("uidUser","==",user.getUID()),
+
+    );
+
+    let wishList = await getDocs(consulta);
+    let pruebaRef = await doc(wishlist,wishList.docs[0].id);
+    let pruebaRef2 = await doc(games,idGame);
+    const juegos = await getDoc(pruebaRef2);
+
+    await updateDoc(pruebaRef, {
+        juegos: arrayRemove(juegos.data()),
+    });
+
+}
+
+//Función que añade un producto a un carrito.
+export const actualizarProductosCarrito = async (id,dato) => {
+
+    const pruebaRef = await doc(coleccion_carrito, id);
+    const carrito = await getDoc(pruebaRef);
+    let productos = await doc(coleccion,dato);
+    const datos = await getDoc(productos);
+    const array = carrito.data().productos;
+    if(!Array.isArray(array)){
+        await updateDoc(pruebaRef, {
+            productos: arrayUnion(dato),
+            peso: increment(datos.data().peso),
+            precio: increment(datos.data().precio),
+        });
+
+    }else {
+        if (!array.includes(dato)) {
+            await updateDoc(pruebaRef, {
+                productos: arrayUnion(dato),
+                peso: increment(datos.data().peso),
+                precio: increment(datos.data().precio),
+
+            });
+        }
+    }
+    obtenerCarrito(document.getElementById("select_carrito").value);
+};
