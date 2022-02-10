@@ -16,7 +16,6 @@ import {
     where,
     orderBy,
     limit,
-    increment,
   deleteDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 import {
@@ -243,6 +242,7 @@ export const queryGamesSearch = async (querys) => {
   }
 };
 
+
 export const crearWishlist = () => {
   onAuthStateChanged(auth, async (usuario) => {
     if (usuario !== null) {
@@ -266,6 +266,8 @@ export const eliminarWishlist = async () => {
   let obtainWishlist = await getDocs(consulta);
   await deleteDoc(doc(wishlist, obtainWishlist.docs[0].id));
 };
+
+
 
 export const addGameToWishlist = async (idGame) => {
 
@@ -304,31 +306,3 @@ export const removeGameToWishlist = async (idGame) => {
     });
 
 }
-
-//Función que añade un producto a un carrito.
-export const actualizarProductosCarrito = async (id,dato) => {
-
-    const pruebaRef = await doc(coleccion_carrito, id);
-    const carrito = await getDoc(pruebaRef);
-    let productos = await doc(coleccion,dato);
-    const datos = await getDoc(productos);
-    const array = carrito.data().productos;
-    if(!Array.isArray(array)){
-        await updateDoc(pruebaRef, {
-            productos: arrayUnion(dato),
-            peso: increment(datos.data().peso),
-            precio: increment(datos.data().precio),
-        });
-
-    }else {
-        if (!array.includes(dato)) {
-            await updateDoc(pruebaRef, {
-                productos: arrayUnion(dato),
-                peso: increment(datos.data().peso),
-                precio: increment(datos.data().precio),
-
-            });
-        }
-    }
-    obtenerCarrito(document.getElementById("select_carrito").value);
-};

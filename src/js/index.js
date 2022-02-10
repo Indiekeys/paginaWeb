@@ -12,6 +12,7 @@ window.onload = () => {
   //Se obtienen los datos de los DLC de los juegos.
   db.obtenerDlc();
 
+
     document.getElementById("log_out").addEventListener(
         "click",
         (e) => {
@@ -21,12 +22,12 @@ window.onload = () => {
         false
     )
 
-  //Se crea un eventlistener en el cual al cambiar de plataforma se obtendrán los juegos de esa plataforma.
-  document.getElementById("plataforma").addEventListener(
-    "change",
-    (e) => {
-      document.getElementById("order").selectedIndex = 0;
-      document.getElementById("option").selectedIndex = 0;
+
+    document.getElementById("plataforma").addEventListener(
+        "change",
+        (e) => {
+            document.getElementById("order").selectedIndex=0;
+            document.getElementById("option").selectedIndex=0;
 
             if(!e.target.value==""){
                 db.queryGamesPlatform(e.target.value);
@@ -45,6 +46,8 @@ window.onload = () => {
 
             if(!e.target.value==""){
                 db.queryGames(e.target.value);
+            }else{
+                db.obtenerGames();
             }
 
         },
