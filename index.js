@@ -3,7 +3,7 @@
 const express = require("express");
 const app = express();
 //Se crea una variable la cual almacena el puerto por el cual se va a ejecutar el servidor.
-const port = 8080;
+const port = 80;
 //Hacemos público los assets y el src, para que los js y css puedan ser accesibles.
 app.use("/assets", express.static("assets"));
 app.use("/src", express.static("src"));
