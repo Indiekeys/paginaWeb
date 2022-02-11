@@ -15,9 +15,9 @@ import {
   updateProfile,
   sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
-import * as validar from "./validacion.js";
-import {Usuario} from "./Usuario.js";
-import * as print from "./print.js";
+import * as validar from "../plantillas/validacion.js";
+import {Usuario} from "../clases/Usuario.js";
+import * as print from "../plantillas/print.js";
 import {crearWishlist,obtenerWishList} from "./firestore.js";
 //Se crean las siguientes constantes, en las cuales se encuentra, el auth, proveedor del auth, contenedor mensaje de error y el usuario.
 const auth = getAuth(app);

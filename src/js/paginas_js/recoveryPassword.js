@@ -1,6 +1,6 @@
 "use strict";
 //Se importan dependencias.
-import { app } from "./firebase.js";
+import { app } from "../firebase/firebase.js";
 import {
   getAuth,
   sendPasswordResetEmail,

@@ -1,6 +1,6 @@
 "use strict";
 //Se importan dependencias
-import { correctAuth } from "./firebase_auth.js";
+import { correctAuth } from "../firebase/firebase_auth.js";
 import { recoveryPassword } from "./recoveryPassword.js";
 window.onload = () => {
   //Si el auth es correcto se puede acceder a la página

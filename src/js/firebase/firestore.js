@@ -1,6 +1,6 @@
 "use strict";
 //Se importan las dependencias.
-import * as plantillas from "./print.js";
+import * as plantillas from "../plantillas/print.js";
 import { app } from "./firebase.js";
 import {
   getFirestore,
@@ -22,8 +22,8 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
-import { Usuario } from "./Usuario.js";
-import {printNoGame, printNoGameWish} from "./print.js";
+import { Usuario } from "../clases/Usuario.js";
+import {printNoGame, printNoGameWish} from "../plantillas/print.js";
 
 //Se declaran las constantes a utilizar.
 const auth = getAuth(app);

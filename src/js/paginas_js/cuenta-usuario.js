@@ -1,10 +1,10 @@
 "use strict";
 //Se importan las dependencias.
-import {app} from './firebase.js';
+import {app} from '../firebase/firebase.js';
 import {getAuth } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
-import {Usuario} from './Usuario.js';
-import {isNotLoggedIn,log_out,comprobarAuth} from './firebase_auth.js';
-import {eliminarWishlist} from './firestore.js';
+import {Usuario} from '../clases/Usuario.js';
+import {isNotLoggedIn,log_out,comprobarAuth} from '../firebase/firebase_auth.js';
+import {eliminarWishlist} from '../firebase/firestore.js';
 window.onload = () => {
     //Se obtiene el auth y se crea un usuario.
     const auth = getAuth(app);

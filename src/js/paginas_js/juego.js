@@ -1,7 +1,7 @@
 "use strict";
 //Se importan dependencias
-import * as script from "./firebase_auth.js";
-import * as db from "./firestore.js";
+import * as script from "../firebase/firebase_auth.js";
+import * as db from "../firebase/firestore.js";
 
 window.onload = () => {
   //Se comprueba si esta iniciada la sesión o no.
